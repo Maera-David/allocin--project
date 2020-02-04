@@ -1,0 +1,14 @@
+{
+    "name": "acs/mvc-poo-twig",
+    "description": "A custom MVC made for the students of ACS Mulhouse, that allows to use Twig",
+    "require": {
+        "twig/twig": "3.0"
+    },
+    "autoload": {
+        "classmap": [
+            "Router",
+            "Controllers",
+            "Models"
+        ]
+    }
+}

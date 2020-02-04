@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>{% block title %}Accueil{% endblock %}</title>
+    {% block stylesheets %}
+    {# Here you can add only the CSS that you need #}
+    {% endblock %}
+</head>
+
+<body>
+    {% block header %}
+    <nav>
+        <ul>
+            <li><a href="{{baseUrl}}">Accueil</a></li>
+        </ul>
+    </nav>
+    {% endblock %}
+
+    {% block body %}
+    {# Here the main content, you can create other blocks if there are useful to you #}
+    {% endblock %}
+
+    {% block footer %}
+    {% endblock %}
+
+    {% block javascripts %}
+    {# Here you can add only the JS that you need #}
+    {% endblock %}
+</body>
+
+</html>
