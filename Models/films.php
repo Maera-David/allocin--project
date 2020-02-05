@@ -14,6 +14,6 @@ class Film extends Model
         $req->execute();
         $films = $req->fetchAll();
         return $films;*/
-        var_dump($this->pdo);
+        
     }
 }

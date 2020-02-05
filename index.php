@@ -5,5 +5,6 @@ $router = new Router($_GET['url']);
 
 //liste de nos routes
 $router->get('/', 'Home.index');
+$router->get('/admin', "Admin.login");
 
 $router->run();
