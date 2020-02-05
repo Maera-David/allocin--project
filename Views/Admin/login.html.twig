@@ -1,0 +1,32 @@
+{% extends "template.html.twig" %}
+{% block stylesheets %}
+<link rel= "stylesheet" href="{{baseUrl}}/assets/css/AdminStyle.css">
+{% endblock %}
+{% block body %}
+
+<header>
+<div class="container center-div shadow mb-5">
+    <div class="heading text-center mb-5 text-uppercase text-white "> ADMIN LOGIN PAGE</div>
+    <div class="container row d-flex flex-row justify-content-center mb-5">
+    <div class="admin-form shadow p-2">
+<form action="" method="POST">
+    <div class="form-group">
+        <label for=""class="text-light">Email ID :</label>
+        <input type="text" name="user" value="" class="form-control" autocomplete="off">
+    </div>
+
+    <div class="form-group">
+        <label for=""class="text-light">PASSWORD :</label>
+        <input type="password" name="password" value="" class="form-control" autocomplete="off">
+    </div>
+
+        <input type="submit" class="btn btn-success" name="submit">
+    
+</form>
+</div>
+</div>
+</div>
+
+</header> 
+
+{% endblock %}
