@@ -8,6 +8,7 @@ class Controller
 
     public function __construct() {
         $this->twig = self::getTwig();
+        $this->baseUrl = self::getBaseUrl(); 
     }
 
     protected static function getTwig()
