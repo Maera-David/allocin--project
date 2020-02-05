@@ -10,8 +10,8 @@ class HomeController extends Controller
     public function index()
     {
         //var_dump($this->twig);
-        $film = new Film();
-        $film->getAllFilm();
+       // $film = new Film();
+        //$film->getAllFilm();
         $pageTwig = 'index.html.twig';
         $template = $this->twig->load($pageTwig);
         echo $template->render();
