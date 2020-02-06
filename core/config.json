@@ -1,5 +1,5 @@
 {
-    "dsn": "mysql:host=localhost;dbname=test;port=3308;charset=utf8",
+    "dsn": "mysql:host=localhost;dbname=allocin--project;port=3308;charset=utf8",
     "user": "root",
     "psswd": "",
     "baseUrl": "http://localhost/allocin--project"

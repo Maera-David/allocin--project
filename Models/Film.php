@@ -7,13 +7,12 @@ class Film extends Model
         $this->pdo = parent::getPdo();
     }
 
-    public function getAllFilm()
+    public function getLast6Films()
     {
-        /*$sql = 'SELECT * FROM film';
+        $sql = 'SELECT * FROM film ORDER BY id DESC LIMIT 6';
         $req = $this->pdo->prepare($sql);
         $req->execute();
         $films = $req->fetchAll();
-        return $films;*/
-        var_dump($this->pdo);
+        return $films;
     }
 }
