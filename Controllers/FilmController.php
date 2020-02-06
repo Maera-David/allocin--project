@@ -4,7 +4,7 @@ class FilmController extends Controller
 {
     public function __construct()
     {
-        self:$_twig = parent::getTwig();
+        self::$_twig = parent::getTwig();
     }
 
     public function show(int $id)
@@ -13,7 +13,7 @@ class FilmController extends Controller
         $instanceFilm = new Film();
         $film = $instanceFilm->getOneFilm($id);
         $pageTwig = 'show.html.twig';
-        $template = $this->twig->load($pageTwig);
+        $template = self::$_twig->load($pageTwig);
         echo $template->render(['film' => $film]);
     }
 
