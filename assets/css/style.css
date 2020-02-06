@@ -68,7 +68,7 @@ min-height: 100vh;
 .page-footer
 {
     background-color:#4A235A;
-    font-family: sans-serif;
+    font-family: 'Gill Sans', 'Gill Sans MT', 'Trebuchet MS', sans-serif, sans-serif;
     color: white;
     position: fixed; 
     bottom: 0px;
