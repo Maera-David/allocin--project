@@ -108,10 +108,10 @@ footer {
 /* PRESENTATION */
 .presentation {
     width: 500px;
-    margin-left: 550px;
+    margin-left: 700px;
     margin-bottom: 100px;
     margin-top: 50px;
-    background: #cecbcc;
+    background: url(https://ak7.picdn.net/shutterstock/videos/14044007/thumb/5.jpg);
     text-align: justify;
     position: relative;
     font-family: Calibri, sans-serif;
@@ -121,7 +121,8 @@ footer {
 }
 
 .presentation header {
-    background: url(https://i.servimg.com/u/f26/19/99/69/81/fond_f11.png);
+    /*background: url(https://thumbs.gfycat.com/NeighboringWeepyHornet-size_restricted.gif) no-repeat;*/
+    width: 100%;
     box-sizing: border-box;
     padding: 3% 0;
     text-align: center;
@@ -134,11 +135,12 @@ footer {
     font-size: 30px;
     text-transform: uppercase;
     margin: 0 0 2% 0;
-color: #e51a5e;
+   color: #9e03ce;
 }
 
 .presentation header h3 {
   font-size: 11px;
+  color: whitesmoke;
 }
 
 .presentation .content {
@@ -154,20 +156,25 @@ color: #e51a5e;
 
 img.img_presentation {
     float: left;
+    margin-bottom: 20px;
     width: 200px;
     height: 320px;
     object-fit: cover;
+    border-radius: 15%;
 }
 
 .presentation .bloc1, .presentation .bloc2  {
-    background: #e3e0e2;
-    border: 1px solid #b6b5b7;
+    background: #4447ff60;
+    border: 1px solid #4447ff60;
     float: right;
     width: 55%;
     margin: 0 0 2%;
     box-sizing: border-box;
     padding: 1%;
-    font-size: 11px;
+    font-size: 15px;
+    color: #fad4ff;
+    margin-top: 10px;
+    border-radius: 10%;
 }
 
 .presentation .bloc2 p {
@@ -188,14 +195,16 @@ clear: both;
 }
 
 .presentation .histoire {
-    background: #e3e0e2;
-    border: 1px solid #b6b5b7;
+    background: #4447ff60;
+    border: 1px solid #4447ff60;
     min-height: 200px;
     padding: 2%;
     box-sizing: border-box;
+    color: #fad4ff;
+    border-radius: 10%;
 }
 
-.presentation .img_footer_gauche {
+/*.presentation .img_footer_gauche {
     position: absolute;
     left: 0;
     bottom: 0;
@@ -205,15 +214,4 @@ clear: both;
     position: absolute;
     right: 0;
     bottom: 0;
-}
-
-a.wicked_credits {
-    text-align: right;
-    display: block;
-    font-style: italic;
-    text-transform: lowercase;
-    letter-spacing: -1px;
-    font-size: 10px;
-    margin: 4% 12% 0 0;
-    color: #b3afaf;
-}
+}*/
