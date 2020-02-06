@@ -15,4 +15,13 @@ class Film extends Model
         $films = $req->fetchAll();
         return $films;
     }
+
+    public function getOneFilm($id)
+    {
+        $sql = 'SELECT * FROM film WHERE id = ?';
+        $req = $this->pdo->prepare($sql);
+        $req->execute([$id]);
+        $film = $req->fetch();
+        return $film;
+    }
 }

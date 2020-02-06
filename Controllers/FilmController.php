@@ -9,7 +9,12 @@ class FilmController extends Controller
 
     public function show(int $id)
     {
-        var_dump($id);
+        //var_dump($id);
+        $instanceFilm = new Film();
+        $film = $instanceFilm->getOneFilm($id);
+        $pageTwig = 'show.html.twig';
+        $template = $this->twig->load($pageTwig);
+        echo $template->render(['film' => $film]);
     }
 
 }
