@@ -1,10 +1,26 @@
 {% extends "template.html.twig" %}
 
 {% block body %}
-	<h1></h1>
-	<div class="container">
+    <h1></h1>
+    <div class="container">
 
 
+        <div class="row">
+            {% for film in films|slice(0, 3) %}
+                <div class="col-4 text-center">
+                    <a href="{{baseUrl}}/film/{{film.id}}"><img src="{{baseUrl}}/assets/img/film/{{film.affiche}}"></a>
+                </div>
+            {% endfor %}
+                {#<div class="col-4 text-center">
+                    <a href=""><img src="{{baseUrl}}/assets/img/film/50n.jpg"></a>
+                </div>
+                <div class="col-4 text-center">
+                    <a href=""><img src="{{baseUrl}}/assets/img/film/ds.jpg"></a>
+                </div>
+                <div class="col-4 text-center">
+                    <a href=""><img src="{{baseUrl}}/assets/img/film/koe_no_katachi.jpg"></a>
+                </div>#}
+        </div>
 		<div class="row">
 			{% for film in films|slice(0, 3) %}
 				<div class="col-4 text-center">

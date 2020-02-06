@@ -4,7 +4,7 @@ class FilmController extends Controller
 {
     public function __construct()
     {
-        $this->twig = parent::getTwig();
+        self:$_twig = parent::getTwig();
     }
 
     public function show(int $id)
