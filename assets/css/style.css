@@ -81,3 +81,139 @@ footer {
 }
 
 /********** DEBUT CSS PARTIE FILM **********/
+::-webkit-scrollbar {
+  width: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #c84a6f;
+}
+
+::-webkit-scrollbar-track {
+  background: #cfcbcc;
+}
+
+/********** PRESENTATION **********/
+::-webkit-scrollbar {
+  width: 4px;
+}
+::-webkit-scrollbar-thumb {
+  background: #c84a6f;
+}
+::-webkit-scrollbar-track {
+  background: #cfcbcc;
+}
+
+
+/* PRESENTATION */
+.presentation {
+    width: 500px;
+    margin-left: 550px;
+    margin-bottom: 100px;
+    margin-top: 50px;
+    background: #cecbcc;
+    text-align: justify;
+    position: relative;
+    font-family: Calibri, sans-serif;
+    font-weight: bold;
+    color: #858386;
+    padding: 0 0 1%;
+}
+
+.presentation header {
+    background: url(https://i.servimg.com/u/f26/19/99/69/81/fond_f11.png);
+    box-sizing: border-box;
+    padding: 3% 0;
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    line-height: .5;
+}
+
+.presentation header h2 {
+    font-size: 30px;
+    text-transform: uppercase;
+    margin: 0 0 2% 0;
+color: #e51a5e;
+}
+
+.presentation header h3 {
+  font-size: 11px;
+}
+
+.presentation .content {
+    margin: 3% auto 0;
+    width: 95%;
+}
+
+.presentation .content::after {
+    content: "";
+    display: block;
+    clear: both;
+}
+
+img.img_presentation {
+    float: left;
+    width: 200px;
+    height: 320px;
+    object-fit: cover;
+}
+
+.presentation .bloc1, .presentation .bloc2  {
+    background: #e3e0e2;
+    border: 1px solid #b6b5b7;
+    float: right;
+    width: 55%;
+    margin: 0 0 2%;
+    box-sizing: border-box;
+    padding: 1%;
+    font-size: 11px;
+}
+
+.presentation .bloc2 p {
+    height: 176px;
+    overflow: auto;
+    padding: 0 2% 0;
+    width: 98%;
+    margin: 0 auto;
+    box-sizing: border-box;
+}
+
+.presentation .bloc1 span {
+  color: #e51a5e;
+}
+
+.clear {
+clear: both;
+}
+
+.presentation .histoire {
+    background: #e3e0e2;
+    border: 1px solid #b6b5b7;
+    min-height: 200px;
+    padding: 2%;
+    box-sizing: border-box;
+}
+
+.presentation .img_footer_gauche {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+}
+
+.presentation .img_footer_droite {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+}
+
+a.wicked_credits {
+    text-align: right;
+    display: block;
+    font-style: italic;
+    text-transform: lowercase;
+    letter-spacing: -1px;
+    font-size: 10px;
+    margin: 4% 12% 0 0;
+    color: #b3afaf;
+}
