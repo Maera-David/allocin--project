@@ -39,10 +39,12 @@ class ComposerStaticInite04e9178da2aba25e91f1685a2e76849
     );
 
     public static $classMap = array (
+        'Admin' => __DIR__ . '/../..' . '/Models/Admin.php',
+        'AdminController' => __DIR__ . '/../..' . '/Controllers/AdminController.php',
         'Artist' => __DIR__ . '/../..' . '/Models/Artist.php',
         'ArtistController' => __DIR__ . '/../..' . '/Controllers/ArtistController.php',
         'Controller' => __DIR__ . '/../..' . '/Controllers/Controller.php',
-        'Film' => __DIR__ . '/../..' . '/Models/Films.php',
+        'Films' => __DIR__ . '/../..' . '/Models/Films.php',
         'HomeController' => __DIR__ . '/../..' . '/Controllers/HomeController.php',
         'Model' => __DIR__ . '/../..' . '/Models/Model.php',
         'NotFoundController' => __DIR__ . '/../..' . '/Controllers/NotFoundController.php',

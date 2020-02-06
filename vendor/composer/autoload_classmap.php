@@ -6,10 +6,12 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
+    'Admin' => $baseDir . '/Models/Admin.php',
+    'AdminController' => $baseDir . '/Controllers/AdminController.php',
     'Artist' => $baseDir . '/Models/Artist.php',
     'ArtistController' => $baseDir . '/Controllers/ArtistController.php',
     'Controller' => $baseDir . '/Controllers/Controller.php',
-    'Film' => $baseDir . '/Models/Films.php',
+    'Films' => $baseDir . '/Models/Films.php',
     'HomeController' => $baseDir . '/Controllers/HomeController.php',
     'Model' => $baseDir . '/Models/Model.php',
     'NotFoundController' => $baseDir . '/Controllers/NotFoundController.php',
