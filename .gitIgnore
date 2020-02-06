@@ -1,2 +1,5 @@
 #Ignore 'config.json'
 config.json
+
+vendor/
+*.sql
