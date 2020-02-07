@@ -14,3 +14,6 @@ class ArtistController extends Controller
         var_dump($artists); //{% for artist in artists %} {{artist.nom}}
     }
 }
+
+
+
