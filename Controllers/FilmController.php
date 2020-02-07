@@ -12,9 +12,11 @@ class FilmController extends Controller
         //var_dump($id);
         $instanceFilm = new Film();
         $film = $instanceFilm->getOneFilm($id);
-        $pageTwig = 'show.html.twig';
+        $instanceArtiste = new Artist();
+        $actors = $instanceArtiste->getActorsFromOneFilm($id);
+        $pageTwig = 'filmShow.html.twig';
         $template = self::$_twig->load($pageTwig);
-        echo $template->render(['film' => $film]);
+        echo $template->render(['film' => $film, 'actors' => $actors]);
     }
 
 }

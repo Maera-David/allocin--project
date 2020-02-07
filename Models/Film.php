@@ -18,7 +18,7 @@ class Film extends Model
 
     public function getOneFilm($id)
     {
-        $sql = 'SELECT * FROM film WHERE id = ?';
+        $sql = 'SELECT film.*, genre.nom AS genre, artiste.nom AS nomReal, artiste.prenom AS prenomReal FROM film, artiste, genre WHERE film.id = ? AND film.genre_id = genre.id AND film.artiste_id = artiste.id';
         $req = $this->pdo->prepare($sql);
         $req->execute([$id]);
         $film = $req->fetch();
