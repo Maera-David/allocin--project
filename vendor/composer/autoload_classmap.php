@@ -10,7 +10,7 @@ return array(
     'ArtistController' => $baseDir . '/Controllers/ArtistController.php',
     'Controller' => $baseDir . '/Controllers/Controller.php',
     'FilmController' => $baseDir . '/Controllers/FilmController.php',
-    'Films' => $baseDir . '/Models/Films.php',
+    'Films' => $baseDir . '/Models/films.php',
     'HomeController' => $baseDir . '/Controllers/HomeController.php',
     'Model' => $baseDir . '/Models/Model.php',
     'NotFoundController' => $baseDir . '/Controllers/NotFoundController.php',

@@ -43,7 +43,7 @@ class ComposerStaticInite04e9178da2aba25e91f1685a2e76849
         'ArtistController' => __DIR__ . '/../..' . '/Controllers/ArtistController.php',
         'Controller' => __DIR__ . '/../..' . '/Controllers/Controller.php',
         'FilmController' => __DIR__ . '/../..' . '/Controllers/FilmController.php',
-        'Films' => __DIR__ . '/../..' . '/Models/Films.php',
+        'Films' => __DIR__ . '/../..' . '/Models/films.php',
         'HomeController' => __DIR__ . '/../..' . '/Controllers/HomeController.php',
         'Model' => __DIR__ . '/../..' . '/Models/Model.php',
         'NotFoundController' => __DIR__ . '/../..' . '/Controllers/NotFoundController.php',

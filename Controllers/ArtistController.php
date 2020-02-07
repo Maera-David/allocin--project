@@ -12,4 +12,11 @@ class ArtistController extends Controller
     {
        
     }
+
+    public function showActor(int $id)
+    {
+        $pageTwig = 'infoActeur.html.twig';
+        $template = $this->twig->load($pageTwig);
+        echo $template->render();
+    }
 }
