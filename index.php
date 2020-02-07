@@ -8,7 +8,7 @@ $router = new Router($_GET['url']);
 //liste de nos routes
 $router->get('/acteur', "Artist.listActeur");
 $router->get('/', 'Home.index');
-$router->get('/admin', "Admin.login");
 $router->post('/admin/log', "Admin.checklogin");
-
+$router->get('/admin/index', 'Admin.index');
+$router->get('/admin', "Admin.login");
 $router->run();

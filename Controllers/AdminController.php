@@ -6,7 +6,7 @@ class AdminController extends Controller
     {
         parent::__construct();
         $this->model = new Admin();
-
+        session_start();
     }
 
 
@@ -24,7 +24,8 @@ class AdminController extends Controller
             if($adminInfo = $this->model->adminPseudoExist($_POST['pseudo'])){
                 if(password_verify($_POST['password'], $adminInfo['password'])){
                   //Tout est ok --> redirection header('Location: la route désirée')
-
+                  $_SESSION["admin"] = true;
+                  header("Location: $this->baseUrl/admin/index");
                 } else {
                     //Mdp faux
                     $error = "Mot de passe incorrect";
@@ -37,6 +38,13 @@ class AdminController extends Controller
             $template = $this->twig->load($pageTwig);
             echo $template->render(['error' => $error]);
         } 
+    }
+
+    public function index()
+    {
+        $pageTwig = 'Admin/index.html.twig';
+        $template = $this->twig->load($pageTwig);
+        echo $template->render(["session" => $_SESSION]);
     }
 }
 
