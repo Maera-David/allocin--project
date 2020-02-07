@@ -24,12 +24,12 @@ class AdminController extends Controller
                     $error = "ok";
                 } else {
                   
-                     $error = "pas ok";
+                    $error = "pas ok";
                      
                 }
                 $pageTwig = 'Admin/login.html.twig';
                 $template = $this->twig->load($pageTwig);
-                echo $template->render(['les identifiants sont incorrect' => $error]);
+                echo $template->render(['error' => 'Les identifiants sont incorrects']);
             }
         } else {
             
