@@ -39,6 +39,7 @@ class ComposerStaticInite04e9178da2aba25e91f1685a2e76849
     );
 
     public static $classMap = array (
+        'Admin' => __DIR__ . '/../..' . '/Models/Admin.php',
         'AdminController' => __DIR__ . '/../..' . '/Controllers/AdminController.php',
         'Artist' => __DIR__ . '/../..' . '/Models/Artist.php',
         'ArtistController' => __DIR__ . '/../..' . '/Controllers/ArtistController.php',
