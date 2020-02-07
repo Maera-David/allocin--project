@@ -3,13 +3,14 @@
 }
 .navbar
 {
-    background-color:#4A235A;
-    margin-bottom: 55px;
+    background-color:rgb(51, 16, 58);
+    margin-bottom: 20px;
 }
 h1
 {
     text-align: center;
-    color:white;
+    color:rgba(238, 217, 31, 0.986);
+    padding-bottom: 15px;
 }
 body
 {

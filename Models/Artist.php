@@ -7,12 +7,12 @@ class Artist extends Model
         $this->pdo = parent::getPdo();
     }
 
-    public function getAllArtist()
+    public function getAllReal()
     {
-        //$sql = 'SELECT * FROM artist';
-        //$req = $this->pdo->prepare($sql);
-        //$req->execute();
-        //return $req->fetchAll();
+        $sql = 'SELECT DISTINCT artiste.nom, artiste.prenom FROM `film`, `artiste` WHERE film.artiste_id = artiste.id';
+        $req = $this->pdo->prepare($sql);
+        $req->execute();
+        return $req->fetchAll();
     }
 
     public function getActorsFromOneFilm($id)
@@ -20,6 +20,14 @@ class Artist extends Model
         $sql = 'SELECT artiste.nom, artiste.prenom, film_has_artiste.role FROM artiste, film, film_has_artiste WHERE film.id = ? AND film.id = film_has_artiste.film_id AND film_has_artiste.artiste_id = artiste.id';
         $req = $this->pdo->prepare($sql);
         $req->execute([$id]);
+        return $req->fetchAll();
+    }
+
+    public function getAllActors()
+    {
+        $sql = 'SELECT DISTINCT artiste.nom, artiste.prenom FROM film_has_artiste, artiste WHERE film_has_artiste.artiste_id = artiste.id';
+        $req = $this->pdo->prepare($sql);
+        $req->execute();
         return $req->fetchAll();
     }
 }

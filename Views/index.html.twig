@@ -1,10 +1,9 @@
 {% extends "template.html.twig" %}
 
 {% block body %}
-    <h1></h1>
+   <h1> Les coups de coeur de la semaine!</h1>
     <div class="container">
-
-
+			
         <div class="row">
             {% for film in films|slice(0, 3) %}
                 <div class="col-4 text-center">

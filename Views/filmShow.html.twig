@@ -1,29 +1,44 @@
 {% extends "template.html.twig" %}
 
 {% block body %}
-{{ dump(actors, film) }}
+	{#{{ dump(actors, film) }}#}
 
 	<div class="presentation">
 		<header>
 			<h2>{{film.titre}}</h2>
-			<h3>{{film.prenomReal}} {{film.nomReal}}</h3>
+			<h3>{{film.prenomReal}}
+				{{film.nomReal}}</h3>
 		</header>
 		<div class="content">
 			<img src="{{baseUrl}}/assets/img/film/{{film.affiche}}" class="img_presentation" alt=""/>
-			<div class="bloc1">Sorti en <span>{{film.sortie}}</span> et réalisé par <span>{{film.nomReal}}</span>. C'est un film <span>{{film.genre}}</span> qui dure environs <span>durée</span>. On y retrouve les acteurs <span></span>.
+			<div class="bloc1">Sorti en
+				<span>{{film.sortie}}</span>
+				et réalisé par
+				<span>{{film.nomReal}}</span>. C'est un film
+				<span>{{film.genre}}</span>
+				qui dure environs
+				<span>durée</span>. <br>	
+				On y retrouve les acteurs :
+				{% for actor in actors %}
+				{{ actor.prenom }}, {{ actor.nom }}	
+				{% endfor %}
+				<span></span>
 			</div>
+
 
 			<div class="bloc2">
 				<p>
-				synopsis : Lorem ipsum
+					synopsis : 
+					Lorem ipsum
 				</p>
 			</div>
 
 			<div class="clear"></div>
 
-			<div class="histoire">Liens vers acteurs et réal ou infos realisateur</div>
+			<div class="histoire">Liens vers acteurs et réal ou infos realisateur : lorem ipsum</div>
 
 		</div>
 	</div>
 
 {% endblock %}
+
