@@ -2,6 +2,23 @@
     margin: 0;
     padding: 0;
 }
+nav ul li a 
+{
+    color:#9e03ce;
+    font-size: 1.4rem;
+    list-style-type: none;
+    padding:0;
+}
+p
+{
+    color:white;
+    position:absolute;
+    top:15%;
+    left:43%; 
+    font-family: 'Staatliches', cursive;
+    font-size: 1.4rem;
+
+}
 
 .center-div {
     position: absolute;
@@ -16,6 +33,8 @@
     font-size: 1.4rem;
     background: -webkit-linear-gradient(left, #0072ff, #8811c5);
     font-family: 'Staatliches', cursive;
+
     
 }
+
 
