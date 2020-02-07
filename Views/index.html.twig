@@ -1,73 +1,46 @@
 {% extends "template.html.twig" %}
 
-{% block header %}
-
-	<nav class="navbar navbar-expand-lg navbar-dark">
-		<a class="navbar-brand" href="#">PachiMovies</a>
-		<ul class="navbar-nav mr-auto">
-			<li class="nav-item">
-				<a class="nav-link text-white" href="{{baseUrl}}">Accueil</a>
-			</li>
-			<li class="nav-item">
-				<a class="nav-link" href="{{baseUrl}}">Réalisateur</a>
-			</li>
-			<li class="nav-item">
-				<a class="nav-link" href="{{baseUrl}}/acteur">Acteur</a>
-			</li>
-			<li class="nav-item">
-				<a class="nav-link" href="{{baseUrl}}">Film</a>
-			</li>
-			<li class="nav-item">
-				<a class="nav-link" href="{{baseUrl}}">Genre</a>
-			</li>
-			<li class="nav-item dropdown">
-				<a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink-4" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-					<i class="fas fa-user"></i>
-					Profile
-				</a>
-				<div class="dropdown-menu dropdown-menu-right dropdown-info" aria-labelledby="navbarDropdownMenuLink-4">
-					<a class="dropdown-item" href="#">My account</a>
-					<a class="dropdown-item" href="#">Log out</a>
-				</div>
-			</li>
-		</ul>
-		{#<form class="form-inline" action="/action_page.php">
-					<input class="form-control mr-sm-2" type="text" placeholder="Search">
-					<button type="button" class="btn btn-outline-warning">Warning</button>
-				</form>#}
-	</nav>
+{% block body %}
+    <h1></h1>
+    <div class="container">
 
 
+        <div class="row">
+            {% for film in films|slice(0, 3) %}
+                <div class="col-4 text-center">
+                    <a href="{{baseUrl}}/film/{{film.id}}"><img src="{{baseUrl}}/assets/img/film/{{film.affiche}}"></a>
+                </div>
+            {% endfor %}
+                {#<div class="col-4 text-center">
+                    <a href=""><img src="{{baseUrl}}/assets/img/film/50n.jpg"></a>
+                </div>
+                <div class="col-4 text-center">
+                    <a href=""><img src="{{baseUrl}}/assets/img/film/ds.jpg"></a>
+                </div>
+                <div class="col-4 text-center">
+                    <a href=""><img src="{{baseUrl}}/assets/img/film/koe_no_katachi.jpg"></a>
+                </div>#}
+        </div>
+		<div class="row">
+            {% for film in films|slice(3, 3) %}
+                <div class="col-4 text-center">
+                    <a href="{{baseUrl}}/film/{{film.id}}"><img src="{{baseUrl}}/assets/img/film/{{film.affiche}}"></a>
+                </div>
+            {% endfor %}
+                {#<div class="col-4 text-center">
+                    <a href=""><img src="{{baseUrl}}/assets/img/film/op.jpg"></a>
+                </div>
+                <div class="col-4 text-center">
+                <a href=""><img src="{{baseUrl}}/assets/img/film/pw.jpg"></a>
+                </div>                                                                        <div class="col-4 text-center">
+                <a href=""><img src="{{baseUrl}}/assets/img/film/conj.jpg"></a>
+               </div>#}
+
+	</div>
 {% endblock %}
 
-{% block body %}
-	<h1>Bienvenue</h1>
-	<div class= "row">
-		<div class = "column">
-		<img src ="{{baseUrl}}/assets/img/50n.jpg">
-		<img src ="{{baseUrl}}/assets/img/ds.jpg">
-		<img src ="{{baseUrl}}/assets/img/koe_no_katachi.jpg">
-		</div>
-		<div class = "column">
-		<img src ="{{baseUrl}}/assets/img/op.jpg">
-		<img src ="{{baseUrl}}/assets/img/pw.jpg">
-		<img src ="{{baseUrl}}/assets/img/conj.jpg">
-		</div>
-	</div>
-	{% endblock %}
-
-	{% block footer %}
-		<footer
-			class="page-footer">
-
-			<!-- Copyright -->
-			<div class="footer-copyright text-center py-3">© 2020 Copyright : Maëra - Irina - Béatrice - Isabelle
-			</div>
-		</footer>
-	{% endblock %}
-
-	{% block javascripts %}
-		<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
-		<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-		<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
-	{% endblock %}
+{% block javascripts %}
+	<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+	<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+{% endblock %}

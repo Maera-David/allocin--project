@@ -7,6 +7,9 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>{% block title %}Accueil{% endblock %}</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css">
+    {#<link href="https://stackpath.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-MI32KR77SgI9QAPUs+6R7leEOwtop70UsjEtFEezfKnMjXWx15NENsZpfDgq8m8S" crossorigin="anonymous">#}
     <link rel= "stylesheet" href="{{baseUrl}}/assets/css/style.css">
     {% block stylesheets %}
     
@@ -16,11 +19,38 @@
 
 <body>
     {% block header %}
-    <nav>
-        <ul>
-            <li><a href="{{baseUrl}}">Accueil</a></li>
-        </ul>
-    </nav>
+    <nav class="navbar navbar-expand-lg navbar-dark">
+		<a class="navbar-brand" href="#">PachiMovies</a>
+		<ul class="navbar-nav mr-auto">
+			<li class="nav-item">
+				<a class="nav-link text-white" href="{{baseUrl}}">Accueil</a>
+			</li>
+			<li class="nav-item">
+				<a class="nav-link" href="{{baseUrl}}">Réalisateur</a>
+			</li>
+			<li class="nav-item">
+				<a class="nav-link" href="{{baseUrl}}/acteur">Acteur</a>
+			</li>
+			<li class="nav-item">
+				<a class="nav-link" href="{{baseUrl}}">Film</a>
+			</li>
+			<li class="nav-item">
+				<a class="nav-link" href="{{baseUrl}}">Genre</a>
+			</li>
+			</ul>
+			<div>
+				<a class="nav-link dropdown-toggle text-white" id="navbarDropdownMenuLink-4" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+					<i class="fa fa-user"></i>
+					Admin
+				</a>
+				<div class="dropdown-menu dropdown-menu-right dropdown-info" aria-labelledby="navbarDropdownMenuLink-4">
+					<a class="dropdown-item" href="#">My account</a>
+					<a class="dropdown-item" href="#">Log out</a>
+				</div>
+			</div>
+		
+	</nav>
+
     {% endblock %}
 
     {% block body %}
@@ -33,8 +63,15 @@
     {# Here the main content, you can create other blocks if there are useful to you #}
     {% endblock %}
 
-    {% block footer %}
-    {% endblock %}
+   {% block footer %}
+	<footer
+		class="page-footer">
+
+		<!-- Copyright -->
+		<div class="footer-copyright text-center py-3">© 2020 Copyright : Maëra - Irina - Béatrice - Isabelle
+		</div>
+	</footer>
+{% endblock %}
 
     {% block javascripts %}
     {# Here you can add only the JS that you need #}

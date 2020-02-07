@@ -10,7 +10,6 @@ class ArtistController extends Controller
 
     public function listActeur()
     {
-        //$artists = $this->model->getAllArtist();
-        var_dump($artists); //{% for artist in artists %} {{artist.nom}}
+       
     }
 }
