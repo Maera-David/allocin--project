@@ -12,15 +12,18 @@ class ArtistController extends Controller
     {
         $instanceArtiste = new Artist();
         $actors = $instanceArtiste->getAllActors();  
-        $pageTwig = '.html.twig';
+        $pageTwig = 'artists.html.twig';
         $template = self::$_twig->load($pageTwig);
-        echo $template->render(['actors' => $actors]);
+        echo $template->render(['artists' => $actors]);
     }
 
     public function listRealisateur()
     {
        // $artists = $this->model->getAllArtist();
         $instanceArtiste = new Artist();
-        $reals = $instanceArtiste->getAllReal();  
+        $reals = $instanceArtiste->getAllReal(); 
+        $pageTwig = 'artists.html.twig';
+        $template = self::$_twig->load($pageTwig);
+        echo $template->render(['artists' => $reals]);
     }
 }
