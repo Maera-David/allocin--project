@@ -1,6 +1,6 @@
 <?php
 
-class Films extends Model
+class Film extends Model
 {
     public function __construct()
     {
