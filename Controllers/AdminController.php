@@ -12,9 +12,11 @@ class AdminController extends Controller
 
     public function login()
     {
+        //if(isset($_SESSION["admin"]))
+        $connected = (isset($_SESSION["admin"])) ? true : false;
         $pageTwig = 'Admin/login.html.twig';
         $template = $this->twig->load($pageTwig);
-        echo $template->render();
+        echo $template->render(['connected'=>$connected]);
     }
 
     public function checklogin()
@@ -39,6 +41,7 @@ class AdminController extends Controller
             echo $template->render(['error' => $error]);
         } 
     }
+    
     private function isConnected()
     {
         if(!isset($_SESSION['admin'])){
@@ -53,13 +56,17 @@ class AdminController extends Controller
         $template = $this->twig->load($pageTwig);
         echo $template->render(["session" => $_SESSION]);
     }
+
     public function genre()
     {
         $this->isConnected();
+        $genre = new Genre();
+        $genres = $genre->getAllGenre();
         $pageGenre = 'Admin/genre.html.twig';
         $template = $this->twig->load($pageGenre);
-        echo $template->render(["session" => $_SESSION]);
+        echo $template->render(["session" => $_SESSION, 'genres' => $genres]);
     }
+
 }
 
 

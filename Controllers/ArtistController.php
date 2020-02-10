@@ -10,6 +10,17 @@ class ArtistController extends Controller
 
     public function listActeur()
     {
-       
+        $instanceArtiste = new Artist();
+        $actors = $instanceArtiste->getAllActors();  
+        $pageTwig = '.html.twig';
+        $template = self::$_twig->load($pageTwig);
+        echo $template->render(['actors' => $actors]);
+    }
+
+    public function listRealisateur()
+    {
+       // $artists = $this->model->getAllArtist();
+        $instanceArtiste = new Artist();
+        $reals = $instanceArtiste->getAllReal();  
     }
 }
