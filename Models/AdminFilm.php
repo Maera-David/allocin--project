@@ -1,20 +1,20 @@
 
 <?php
-
-class Films extends Model
+class Admin extends Model
 {
     public function __construct()
     {
         $this->pdo = parent::getPdo();
     }
 
-    public function getAllFilm()
+    //Select all films
+
+    public function getAllFilms()
+
     {
-        /*$sql = 'SELECT * FROM film';
+        $sql = "SELECT * FROM film";
         $req = $this->pdo->prepare($sql);
         $req->execute();
-        $films = $req->fetchAll();
-        return $films;*/
-        
+        return $req->fetchAll();
     }
 }

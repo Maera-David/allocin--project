@@ -1,0 +1,29 @@
+
+{% extends "template.html.twig" %}
+
+{% block body %}
+
+	<div class="presentation">
+		<header>
+			<h2>Titre film</h2>
+			<h3>Réalisateur</h3>
+		</header>
+		<div class="content">
+			<img src="https://i.servimg.com/u/f26/19/99/69/81/avatar10.png" class="img_presentation" alt=""/>
+			<div class="bloc1">Sorti en <span>date</span> et réalisé par <span>Réalisateur</span>. C'est un film <span>genre</span> qui dure environs <span>durée</span>. On y retrouve les acteurs <span>acteurs</span>.
+			</div>
+
+			<div class="bloc2">
+				<p>
+				synopsis
+				</p>
+			</div>
+
+			<div class="clear"></div>
+
+			<div class="histoire">Liens vers acteurs et réal ou infos realisateur</div>
+
+		</div>
+	</div>
+
+{% endblock %}
