@@ -12,6 +12,7 @@ $router->get('/film/:id', "Film.show");
 $router->post('/admin/log', "Admin.checklogin");
 $router->get('/admin/index', 'Admin.index');
 $router->get('/admin', "Admin.login");
+$router->get('/admin/genre','Admin.genre');
 
 $router->get('/', 'Home.index');
 $router->run();

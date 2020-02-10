@@ -2,7 +2,38 @@
 {% block stylesheets %}
 <link rel= "stylesheet" href="{{baseUrl}}/assets/css/AdminStyle.css">
 {% endblock %}
+
+{% block header %}
+
+   <nav class="navbar navbar-expand-lg navbar-dark">
+		<a class="navbar-brand" href="#">PachiMovies</a>
+		<ul class="navbar-nav mr-auto">
+			<li class="nav-item">
+				<a class="nav-link text-white" href="{{baseUrl}}">Accueil</a>
+			</li>
+			<li class="nav-item">
+				<a class="nav-link" href="{{baseUrl}}">Réalisateur</a>
+			</li>
+			<li class="nav-item">
+				<a class="nav-link" href="{{baseUrl}}/acteur">Acteur</a>
+			</li>
+			<li class="nav-item">
+				<a class="nav-link" href="{{baseUrl}}">Film</a>
+			</li>
+			<li class="nav-item">
+				<a class="nav-link" href="{{baseUrl}}/admin/genre">Genre</a>
+			</li>
+			</ul>
+			<div>
+
+
+		
+	</nav>
+{% endblock %}
+{# nav #}
+
+
 {% block body %}
-{{ dump(session) }}
+   
     <h1>Bonjour admin</h1>
 {% endblock %}

@@ -39,14 +39,29 @@ class AdminController extends Controller
             echo $template->render(['error' => $error]);
         } 
     }
+    private function isConnected()
+    {
+        if(!isset($_SESSION['admin'])){
+            header("Location: $this->baseUrl/admin");  
+        }
+    }
 
     public function index()
-    {
+    {         
+        $this->isConnected();
         $pageTwig = 'Admin/index.html.twig';
         $template = $this->twig->load($pageTwig);
         echo $template->render(["session" => $_SESSION]);
     }
+    public function genre()
+    {
+        $this->isConnected();
+        $pageGenre = 'Admin/genre.html.twig';
+        $template = $this->twig->load($pageGenre);
+        echo $template->render(["session" => $_SESSION]);
+    }
 }
+
 
 
  
