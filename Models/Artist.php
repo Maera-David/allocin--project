@@ -9,7 +9,7 @@ class Artist extends Model
 
     public function getAllReal()
     {
-        $sql = 'SELECT DISTINCT artiste.nom, artiste.prenom FROM `film`, `artiste` WHERE film.artiste_id = artiste.id';
+        $sql = 'SELECT DISTINCT artiste.nom, artiste.prenom, artiste.id, artiste.photo FROM `film`, `artiste` WHERE film.artiste_id = artiste.id';
         $req = $this->pdo->prepare($sql);
         $req->execute();
         return $req->fetchAll();
@@ -23,11 +23,27 @@ class Artist extends Model
         return $req->fetchAll();
     }
 
-    public function getAllActors()
+    public function getAllActor()
     {
-        $sql = 'SELECT DISTINCT artiste.nom, artiste.prenom FROM film_has_artiste, artiste WHERE film_has_artiste.artiste_id = artiste.id';
+        $sql = 'SELECT DISTINCT artiste.nom, artiste.prenom,artiste.id, artiste.photo FROM film_has_artiste, artiste WHERE film_has_artiste.artiste_id = artiste.id';
         $req = $this->pdo->prepare($sql);
         $req->execute();
         return $req->fetchAll();
+    }
+
+    public function getOneReal($id)
+    {
+        $sql = 'SELECT artiste.nom, artiste.prenom, artiste.photo, artiste.biographie, artiste.date_de_naissance FROM artiste WHERE artiste.id = ?';
+        $req = $this->pdo->prepare($sql);
+        $req->execute([$id]);
+        return $req->fetch();
+    }
+
+    public function getOneActor($id)
+    {
+        $sql = 'SELECT artiste.nom, artiste.prenom, artiste.photo, artiste.biographie, artiste.date_de_naissance FROM artiste WHERE artiste.id = ?';
+        $req = $this->pdo->prepare($sql);
+        $req->execute([$id]);
+        return $req->fetch();
     }
 }
