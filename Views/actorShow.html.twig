@@ -1,0 +1,28 @@
+{% extends "template.html.twig" %}
+
+{% block body %}
+<link href="https://fonts.googleapis.com/css?family=Cinzel%7CCinzel+Decorative%7COpen+Sans" rel="stylesheet" />
+<div class="astree-cadre">
+    <div ><img src="{{baseUrl}}/assets/img/acteurs/{{actor.photo}}" class="img_acteur"alt=""/></div>
+    
+    <span class="astree-nom">{{actor.prenom}} {{actor.nom}}</span>
+
+        <div class="astree-titre">Identité</div>
+
+        <ul>
+        <li><span> Date de naissance: </span>{{actor.date_de_naissance|date("d/m/Y") }} </li>
+        {# <li><span>Rôles:</span> Machin dans tel truc</li> #}
+        <li><span>Films: </span>
+            {% for film in films %}
+				{{ film.titre }}	
+			{% endfor %} </li>
+        </ul>
+
+        <div class="astree-titre">Biographie</div>
+        <p>{{actor.biographie}}</p>
+        {#<p><a href="#">Clique ici</a></p>
+
+        <div class="astree-titre">Visible aussi dans...</div>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>#}
+</div>
+{% endblock %}
