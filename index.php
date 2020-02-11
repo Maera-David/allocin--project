@@ -15,6 +15,8 @@ $router->get('/admin/index', 'Admin.index');
 $router->get('/admin', "Admin.login");//Ajout la route pour Admin
 $router->get('/admin/genre','Admin.genre');
 $router->get('/admin/film','Admin.film');
+$router->get('/admin/acteur','Admin.acteur');
+$router->get('/admin/realisateur','Admin.realisateur');
 
 $router->get('/', 'Home.index');
 $router->run();

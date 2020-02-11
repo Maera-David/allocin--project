@@ -1,4 +1,3 @@
-
 <?php
 class AdminController extends Controller
 {
@@ -66,6 +65,22 @@ class AdminController extends Controller
         $this->isConnected();
         $pageFilm = 'Admin/film.html.twig';
         $template = $this->twig->load($pageFilm);
+        echo $template->render(["session" => $_SESSION]);
+    }
+
+    public function acteur()
+    {
+        $this->isConnected();
+        $pageActeur = 'Admin/acteur.html.twig';
+        $template = $this->twig->load($pageActeur);
+        echo $template->render(["session" => $_SESSION]);
+    }
+
+    public function realisateur()
+    {
+        $this->isConnected();
+        $pageRealisateur = 'Admin/realisateur.html.twig';
+        $template = $this->twig->load($pageRealisateur);
         echo $template->render(["session" => $_SESSION]);
     }
 }
