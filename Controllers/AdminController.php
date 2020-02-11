@@ -9,7 +9,6 @@ class AdminController extends Controller
         session_start();
     }
 
-
     public function login()
     {
         //if(isset($_SESSION["admin"]))
@@ -41,7 +40,7 @@ class AdminController extends Controller
             echo $template->render(['error' => $error]);
         } 
     }
-    
+
     private function isConnected()
     {
         if(!isset($_SESSION['admin'])){
@@ -67,46 +66,24 @@ class AdminController extends Controller
         echo $template->render(["session" => $_SESSION, 'genres' => $genres]);
     }
 
-}
-
-
-
- 
-
-
-
-
-
-
-
-
-
-
-
-/*class Form
- {
-
-    public function __construct()
-{
-    $nom = "";
-    $password = "";
-}
-
-
-    public function form(){
-
-if (isset($_POST ['form_submit']) && $_POST['user'] != "" && $_POST['password'] != "")
-{
-   $nom = $_POST['user'];
-   $password = $_POST['password'];
-
-   echo "<p>Nom : $nom, password : ". $password ."</p>" ;
-}
-else
-{
-    echo "merci de remplir tous les champs du formulaire<br>";
-    $nom = "";
-    $password = "";
+    public function genreUpdate($id)
+    {
+       $this->isConnected();
+       $instanceGenre = new Genre();
+       if(!empty($_POST)){
+            $instanceGenre->update($id, $_POST["genre"]);
+            header("Location: $this->baseUrl/admin/genre");
+       }
+       $genre = $instanceGenre->getOneGenre($id);
+       $pageGenre = 'Admin/genreUpdate.html.twig';
+       $template = $this->twig->load($pageGenre);
+       echo $template->render(["genre" => $genre]);
     }
- }
-}*/
+    public function genreDelete($id)
+    {
+        $this->isConnected();
+        $instanceGenre = new Genre();
+        $instanceGenre->delete($id);
+        header("Location: $this->baseUrl/admin/genre");  
+    }
+}

@@ -14,6 +14,9 @@ $router->post('/admin/log', "Admin.checklogin");
 $router->get('/admin/index', 'Admin.index');
 $router->get('/admin', "Admin.login");
 $router->get('/admin/genre','Admin.genre');
-
+$router->get('/admin/genreUpdate/:id','Admin.genreUpdate');
+$router->post('/admin/genreUpdate/:id','Admin.genreUpdate');
+$router->get('/admin/genreDelete/:id','Admin.genreDelete');
 $router->get('/', 'Home.index');
+
 $router->run();
