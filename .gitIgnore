@@ -1,8 +1,4 @@
 #Ignore 'config.json'
-<<<<<<< HEAD
-core/config.json
-vendor/
-=======
 config.json
 
 vendor/
@@ -59,4 +55,3 @@ $RECYCLE.BIN/
 *.lnk
 
 # End of https://www.gitignore.io/api/windows,composer,visualstudiocode
->>>>>>> master

@@ -1,22 +1,22 @@
 *, *::after, *::before {
     box-sizing: border-box;
 }
-.navbar
-{
+
+.navbar {
     background-color:rgb(51, 16, 58);
     margin-bottom: 20px;
 }
-h1
-{
+
+h1 {
     text-align: center;
     color:rgba(238, 217, 31, 0.986);
     padding-bottom: 15px;
 }
-body
-{
+
+body {
 background-color: rgba(0, 0, 0, 0.739);
-min-height: 100vh;
 }
+
 /*.row {
     display: flex;
     flex-wrap: wrap;
@@ -44,6 +44,7 @@ min-height: 100vh;
   
   .column img {
     margin-top: 8px;
+    margin-bottom: 8px;
     vertical-align: middle;
     width: 50%;
   }
@@ -56,7 +57,7 @@ min-height: 100vh;
       flex: 50%;
       max-width: 50%;
     }
-  }/*
+  }
   
   
    /*Responsive layout - makes the two columns stack on top of each other instead of next to each other */
@@ -67,7 +68,7 @@ min-height: 100vh;
     }
   } 
 
-.page-footer
+/*.page-footer
 {
     background-color:#4A235A;
     font-family: 'Gill Sans', 'Gill Sans MT', 'Trebuchet MS', sans-serif, sans-serif;
@@ -79,8 +80,23 @@ min-height: 100vh;
     
 }
 footer {
-  position: absolute;
+  position: relative;
   bottom: 0;
+}*/
+
+.footer {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  margin-top: 50px;
+  width: 100%;
+  background-color: #4a235a;
+  color: white;
+  text-align: center;
+}
+
+.footer p {
+  margin-bottom: 5px;
 }
 
 /********** DEBUT CSS PARTIE FILM **********/
@@ -217,7 +233,7 @@ clear: both;
     bottom: 0;
 }*/
 
-/********** CSS ACTEUR CONTENT **********/
+/********** CSS ACTEUR/REALISATEUR CONTENT **********/
 .astree-cadre {
   border: 2px solid #968070;
   background-color: #292929;
