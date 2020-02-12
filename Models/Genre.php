@@ -39,5 +39,12 @@ class Genre extends Model
         $req = $this->pdo->prepare($sql);
         $req->execute([$id]);
     }
+
+    public function add($nom)
+    {
+        $sql = 'INSERT INTO genre (nom) VALUES(?)';
+        $req = $this->pdo->prepare($sql);
+        $req->execute([$nom]);
+    }
 }
  

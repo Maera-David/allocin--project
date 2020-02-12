@@ -17,6 +17,8 @@ $router->get('/admin/genre','Admin.genre');
 $router->get('/admin/genreUpdate/:id','Admin.genreUpdate');
 $router->post('/admin/genreUpdate/:id','Admin.genreUpdate');
 $router->get('/admin/genreDelete/:id','Admin.genreDelete');
+$router->get('/admin/genreAdd','Admin.genreAdd');
+$router->post('/admin/genreAdd','Admin.genreAdd');
 $router->get('/', 'Home.index');
 
 $router->run();

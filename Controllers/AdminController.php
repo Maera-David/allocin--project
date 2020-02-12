@@ -86,4 +86,20 @@ class AdminController extends Controller
         $instanceGenre->delete($id);
         header("Location: $this->baseUrl/admin/genre");  
     }
+
+    public function genreAdd()
+    {
+        $this->isConnected();
+        $instanceGenre = new Genre();
+        if(!empty($_POST)){
+        $instanceGenre->add($_POST["genre"]);
+        header("Location: $this->baseUrl/admin/genre");
+        }
+        $genre = $instanceGenre;
+        //$genre = $instanceGenre->add();
+        $pageGenreAdd = 'Admin/genreAdd.html.twig';
+        $template = $this->twig->load($pageGenreAdd);
+        echo $template->render(["genre" => $genre]);
+
+    }   
 }
