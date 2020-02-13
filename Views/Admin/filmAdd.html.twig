@@ -1,0 +1,20 @@
+{% extends "Admin/templateAdmin.html.twig" %}
+{% block body %}
+<h1> Admin ajouter FILM</h1>
+
+    <div class="container center-div shadow mb-5">
+        <div class="heading text-center mb-5 text-uppercase text-white "></div>
+        <div class="container row d-flex flex-row justify-content-center mb-5">
+            <div class="admin-form shadow p-2">
+                <form action="{{baseUrl}}/admin/filmAdd" method="POST">
+                    <div class="form-group">
+                        <label for="film" class="text-light">FILM:</label>
+                        <input type="text" id="film" name="film" value="" class="form-control" autocomplete="off">
+                    </div>
+                    <input type="submit" class="btn btn-success" name="form_submit">
+                </form>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

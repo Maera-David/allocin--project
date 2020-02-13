@@ -24,6 +24,7 @@ class Film extends Model
         $film = $req->fetch();
         return $film;
     }
+    
 
     public function getAllFilmByOneReal($id)
     {
@@ -41,5 +42,36 @@ class Film extends Model
         $req->execute([$id]);
         $films = $req->fetchAll();
         return $films;
+    }
+
+    //Partie Admin
+    public function getAllFilm()
+    {
+        $sql = 'SELECT * FROM film';
+        $req = $this->pdo->prepare($sql);
+        $req->execute();
+        $film = $req->fetchAll();
+        return $film;
+    }
+
+    public function update($id, $newValue)
+    {
+        $sql = 'UPDATE film SET titre = ? WHERE id = ?';
+        $req = $this->pdo->prepare($sql);
+        $req->execute([$newValue, $id]);
+    }
+
+    public function delete($id)
+    {
+        $sql = 'DELETE FROM film WHERE id = ?';
+        $req = $this->pdo->prepare($sql);
+        $req->execute([$id]);
+    }
+
+    public function add($titre)
+    {
+        $sql = 'INSERT INTO film (titre) VALUES(?)';
+        $req = $this->pdo->prepare($sql);
+        $req->execute([$titre]);
     }
 }

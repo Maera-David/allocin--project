@@ -55,8 +55,7 @@ class AdminController extends Controller
         echo $template->render(["session" => $_SESSION]);
     }
     
-    //Méthodes pour Genre
-    
+    //Méthodes pour Genre 
     public function genre()
     {
         $this->isConnected();
@@ -95,9 +94,32 @@ class AdminController extends Controller
         $this->isConnected();
         $film = new Film();
         $films = $film->getAllFilm();
+        //var_dump($films);
         $pageFilm = 'Admin/film.html.twig';
         $template = $this->twig->load($pageFilm);
         echo $template->render(["session" => $_SESSION, 'films' => $films]);
+    }
+
+    public function filmUpdate($id)
+    {
+       $this->isConnected();
+       $instanceFilm = new Film();
+       if(!empty($_POST)){
+        $instanceFilm->update($id, $_POST["film"]);
+            header("Location: $this->baseUrl/admin/film");
+       }
+       $film = $instanceFilm->getOneFilm($id);
+       $pageFilm = 'Admin/filmUpdate.html.twig';
+       $template = $this->twig->load($pageFilm);
+       echo $template->render(["film" => $film]);
+    }
+
+    public function filmDelete($id)
+    {
+        $this->isConnected();
+        $instanceFilm = new Film();
+        $instanceFilm->delete($id);
+        header("Location: $this->baseUrl/admin/film");  
     }
 
     //Méthodes pour Acteurs
