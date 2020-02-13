@@ -8,12 +8,13 @@ class AdminController extends Controller
         session_start();
     }
 
-
     public function login()
     {
+        //if(isset($_SESSION["admin"]))
+        $connected = (isset($_SESSION["admin"])) ? true : false;
         $pageTwig = 'Admin/login.html.twig';
         $template = $this->twig->load($pageTwig);
-        echo $template->render();
+        echo $template->render(['connected'=>$connected]);
     }
 
     public function checklogin()
@@ -38,6 +39,7 @@ class AdminController extends Controller
             echo $template->render(['error' => $error]);
         } 
     }
+
     private function isConnected()
     {
         if(!isset($_SESSION['admin'])){
@@ -52,22 +54,53 @@ class AdminController extends Controller
         $template = $this->twig->load($pageTwig);
         echo $template->render(["session" => $_SESSION]);
     }
+    
+    //Méthodes pour Genre
+    
     public function genre()
     {
         $this->isConnected();
+        $genre = new Genre();
+        $genres = $genre->getAllGenre();
         $pageGenre = 'Admin/genre.html.twig';
         $template = $this->twig->load($pageGenre);
-        echo $template->render(["session" => $_SESSION]);
+        echo $template->render(["session" => $_SESSION, 'genres' => $genres]);
     }
 
+    public function genreUpdate($id)
+    {
+       $this->isConnected();
+       $instanceGenre = new Genre();
+       if(!empty($_POST)){
+            $instanceGenre->update($id, $_POST["genre"]);
+            header("Location: $this->baseUrl/admin/genre");
+       }
+       $genre = $instanceGenre->getOneGenre($id);
+       $pageGenre = 'Admin/genreUpdate.html.twig';
+       $template = $this->twig->load($pageGenre);
+       echo $template->render(["genre" => $genre]);
+    }
+
+    public function genreDelete($id)
+    {
+        $this->isConnected();
+        $instanceGenre = new Genre();
+        $instanceGenre->delete($id);
+        header("Location: $this->baseUrl/admin/genre");  
+    }
+
+    //Méthodes pour Films
     public function film()
     {
         $this->isConnected();
+        $film = new Film();
+        $films = $film->getAllFilm();
         $pageFilm = 'Admin/film.html.twig';
         $template = $this->twig->load($pageFilm);
-        echo $template->render(["session" => $_SESSION]);
+        echo $template->render(["session" => $_SESSION, 'films' => $films]);
     }
 
+    //Méthodes pour Acteurs
     public function acteur()
     {
         $this->isConnected();
@@ -76,6 +109,7 @@ class AdminController extends Controller
         echo $template->render(["session" => $_SESSION]);
     }
 
+    //Méthodes pour Réalisateurs
     public function realisateur()
     {
         $this->isConnected();
@@ -84,8 +118,6 @@ class AdminController extends Controller
         echo $template->render(["session" => $_SESSION]);
     }
 }
-
-
 
  
 
