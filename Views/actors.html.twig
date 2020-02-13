@@ -3,19 +3,15 @@
 {% block body %}
 <div class="container">
         <div class="row">
-            {% for actor in actors|slice(0, 8) %}
-                <div class="col-4 text-center rounded-circle">
-                    <a href="{{baseUrl}}/acteur/{{actor.id}}"><img src="{{baseUrl}}/assets/img/acteurs/{{actor.photo}}"></a>
+            {% for actor in actors %}
+                <div class="col-centered col-sm-4">
+                    <a href="{{baseUrl}}/acteur/{{actor.id}}">
+                        <img src="{{baseUrl}}/assets/img/acteurs/{{actor.photo}}" class="float-sm-left img-thumbnail" alt="">
+                    </a>
                 </div>
             {% endfor %}
         </div>
-        <div class="row">
-			{% for actor in actors|slice(8, 18) %}
-				<div class="col-4 text-center">
-					<a href="{{baseUrl}}/acteur/{{actor.id}}"><img src="{{baseUrl}}/assets/img/acteurs/{{actor.photo}}"></a>
-				</div>
-               {% endfor %} 
-        </div>
+        
         
 </div>
 {% endblock %}
