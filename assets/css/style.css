@@ -4,13 +4,20 @@
 .navbar
 {
     background-color:rgb(51, 16, 58);
-    margin-bottom: 20px;
 }
+
+.container
+{
+  margin-top: 50px;
+}
+
 h1
 {
     text-align: center;
     color:rgba(238, 217, 31, 0.986);
-    padding-bottom: 15px;
+    padding-top: -15px;
+    margin: 100px;
+    
 }
 body
 {
@@ -103,16 +110,16 @@ min-height: 100vh;
 /* PRESENTATION */
 .presentation {
     width: 500px;
-    margin-left: 700px;
-    margin-bottom: 100px;
-    margin-top: 50px;
+    margin: auto;
+    margin-top: 30px;
     background: url(https://ak7.picdn.net/shutterstock/videos/14044007/thumb/5.jpg);
     text-align: justify;
     position: relative;
-    font-family: Calibri, sans-serif;
+    font-family: 'Calibri', sans-serif;
     font-weight: bold;
     color: #858386;
     padding: 0 0 1%;
+    margin-bottom: 50px;
 }
 
 .presentation header {
@@ -127,7 +134,7 @@ min-height: 100vh;
 }
 
 .presentation header h2 {
-    font-size: 30px;
+    font-size: 25px;
     text-transform: uppercase;
     margin: 0 0 2% 0;
    color: #9e03ce;
@@ -216,7 +223,8 @@ clear: both;
   border: 2px solid #968070;
   background-color: #292929;
   max-width: 500px;
-  margin: 20px auto;
+  margin: auto;
+  margin-top: 130px;
   color: #ababab;
   font-family: 'Open Sans', sans-serif;
   font-size: 13px;
