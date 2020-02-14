@@ -1,7 +1,7 @@
 {% extends "template.html.twig" %}
 
 {% block body %}
-	{#{{ dump(actors, film) }}#}
+	{# {{ dump(artists, film) }} #}
 
 	<div class="presentation">
 		<header>
@@ -12,14 +12,14 @@
 		<div class="content">
 			<img src="{{baseUrl}}/assets/img/film/{{film.affiche}}" class="img_presentation" alt=""/>
 			<div class="bloc1">Sorti en
-				<span>{{film.sortie}}</span>
+				<span>{{film.sortie|date("d/m/Y")}}</span>
 				et réalisé par
 				<span>{{film.nomReal}}</span>. C'est un film
 				<span>{{film.genre}}</span>
 				qui dure environs
 				<span>durée</span>. <br>	
 				On y retrouve les acteurs :
-				{% for actor in actors %}
+				{% for actor in artists %}
 				{{ actor.prenom }}, {{ actor.nom }}	
 				{% endfor %}
 				<span></span>

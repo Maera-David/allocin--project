@@ -1,0 +1,32 @@
+{% extends "template.html.twig" %}
+{% block stylesheets %}
+<link rel= "stylesheet" href="{{baseUrl}}/assets/css/AdminStyle.css">
+{% endblock %}
+
+{% block header %}
+
+<nav class="navbar navbar-expand-lg navbar-dark">
+<a class="navbar-brand" href="#">PachiMovies</a>
+<ul class="navbar-nav mr-auto">
+<li class="nav-item">
+<a class="nav-link text-white" href="{{baseUrl}}">Accueil</a>
+</li>
+<li class="nav-item">
+<a class="nav-link text-white" href="{{baseUrl}}/admin/index">Admin</a>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="{{baseUrl}}/admin/realisateur">Réalisateur</a>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="{{baseUrl}}/admin/acteur">Acteur</a>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="{{baseUrl}}/admin/film">Film</a>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="{{baseUrl}}/admin/genre">Genre</a>
+</li>
+</ul>
+
+</nav>
+{% endblock %}

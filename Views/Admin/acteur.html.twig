@@ -1,0 +1,41 @@
+{% extends "Admin/templateAdmin.html.twig" %}
+
+{% block stylesheets %}
+<link rel= "stylesheet" href="{{baseUrl}}/assets/css/AdminStyle.css">
+{% endblock %}
+{% block body %}
+
+<h1> PAGE ADMIN ACTEUR</h1>
+
+<a href="{{baseUrl}}/admin/acteurAdd"><button type="button" class="btn btn-primary btn-lg btn-block">Ajouter un acteur</button></a>
+<table class="table table-striped table-dark">
+  <thead>  
+      <th scope="col">ID</th>
+      <th scope="col">Nom</th>
+      <th scope="col">Prénom</th>
+      {% for acteur in acteurs |reverse %} 
+      <tr>
+        <th scope="col">{{ acteur.id }}</th>
+        <th scope="col">{{ acteur.nom }}</th>
+        <th scope="col">{{ acteur.prenom }}</th>
+        <div class = "button" >
+          <th><a href="{{baseUrl}}/admin/acteurUpdate/{{acteur.id}}"><button type="button" class="btn btn-primary">Modifier</button></a></th>
+          <th><button type="button" class="btn btn-danger" onclick="messageDelete({{acteur.id}})">Supprimer</button></th>
+        </div> 
+      </tr>
+    {% endfor %}
+  </thead>
+</table>
+      
+
+{% endblock %}
+{% block javascript %}
+<script>
+function messageDelete(id){
+    if ( confirm( "êtes vous sur de vouloir supprimer" ) ) {
+    // Code à éxécuter si le l'utilisateur clique sur "OK"
+        window.location = "{{ baseUrl }}/admin/acteurDelete/" + id;
+    }
+}   
+</script>
+{% endblock %}

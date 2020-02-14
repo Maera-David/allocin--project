@@ -16,7 +16,7 @@ class FilmController extends Controller
         $actors = $instanceArtiste->getActorsFromOneFilm($id);
         $pageTwig = 'filmShow.html.twig';
         $template = self::$_twig->load($pageTwig);
-        echo $template->render(['film' => $film, 'actors' => $actors]);
+        echo $template->render(['film' => $film, 'artists' => $actors]);
     }
 
 }

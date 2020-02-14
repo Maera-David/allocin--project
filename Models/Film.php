@@ -24,4 +24,22 @@ class Film extends Model
         $film = $req->fetch();
         return $film;
     }
+
+    public function getAllFilmByOneReal($id)
+    {
+        $sql = 'SELECT * FROM film WHERE artiste_id = ?';
+        $req = $this->pdo->prepare($sql);
+        $req->execute([$id]);
+        $films = $req->fetchAll();
+        return $films;
+    }
+
+    public function getAllFilmByOneActor($id)
+    {
+        $sql = 'SELECT film.titre FROM film, film_has_artiste, artiste WHERE artiste.id = ? AND film_has_artiste.artiste_id = artiste.id AND film_has_artiste.film_id = film.id';
+        $req = $this->pdo->prepare($sql);
+        $req->execute([$id]);
+        $films = $req->fetchAll();
+        return $films;
+    }
 }
