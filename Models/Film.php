@@ -24,7 +24,8 @@ class Film extends Model
         $film = $req->fetch();
         return $film;
     }
-    
+
+  
 
     public function getAllFilmByOneReal($id)
     {
@@ -54,6 +55,15 @@ class Film extends Model
         return $film;
     }
 
+    public function getOneFilmAdmin($id)
+    {
+        $sql = 'SELECT * FROM film WHERE film.id = ?';
+        $req = $this->pdo->prepare($sql);
+        $req->execute([$id]);
+        $film = $req->fetch();
+        return $film;
+    }
+    
     public function update($id, $newValue)
     {
         $sql = 'UPDATE film SET titre = ? WHERE id = ?';

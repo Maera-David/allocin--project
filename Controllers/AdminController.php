@@ -14,18 +14,18 @@ class AdminController extends Controller
         $connected = (isset($_SESSION["admin"])) ? true : false;
         $pageTwig = 'Admin/login.html.twig';
         $template = $this->twig->load($pageTwig);
-        echo $template->render(['connected'=>$connected]);
+        echo $template->render(['connected' => $connected]);
     }
 
     public function checklogin()
     {
         $error = "";
-        if (isset($_POST['form_submit']) && $_POST['pseudo'] != "" && $_POST['password'] != "") {            
-            if($adminInfo = $this->model->adminPseudoExist($_POST['pseudo'])){
-                if(password_verify($_POST['password'], $adminInfo['password'])){
-                  //Tout est ok --> redirection header('Location: la route désirée')
-                  $_SESSION["admin"] = true;
-                  header("Location: $this->baseUrl/admin/index");
+        if (isset($_POST['form_submit']) && $_POST['pseudo'] != "" && $_POST['password'] != "") {
+            if ($adminInfo = $this->model->adminPseudoExist($_POST['pseudo'])) {
+                if (password_verify($_POST['password'], $adminInfo['password'])) {
+                    //Tout est ok --> redirection header('Location: la route désirée')
+                    $_SESSION["admin"] = true;
+                    header("Location: $this->baseUrl/admin/index");
                 } else {
                     //Mdp faux
                     $error = "Mot de passe incorrect";
@@ -37,24 +37,24 @@ class AdminController extends Controller
             $pageTwig = 'Admin/login.html.twig';
             $template = $this->twig->load($pageTwig);
             echo $template->render(['error' => $error]);
-        } 
+        }
     }
 
     private function isConnected()
     {
-        if(!isset($_SESSION['admin'])){
-            header("Location: $this->baseUrl/admin");  
+        if (!isset($_SESSION['admin'])) {
+            header("Location: $this->baseUrl/admin");
         }
     }
 
     public function index()
-    {         
+    {
         $this->isConnected();
         $pageTwig = 'Admin/index.html.twig';
         $template = $this->twig->load($pageTwig);
         echo $template->render(["session" => $_SESSION]);
     }
-    
+
     //Méthodes pour Genre 
     public function genre()
     {
@@ -68,16 +68,16 @@ class AdminController extends Controller
 
     public function genreUpdate($id)
     {
-       $this->isConnected();
-       $instanceGenre = new Genre();
-       if(!empty($_POST)){
+        $this->isConnected();
+        $instanceGenre = new Genre();
+        if (!empty($_POST)) {
             $instanceGenre->update($id, $_POST["genre"]);
             header("Location: $this->baseUrl/admin/genre");
-       }
-       $genre = $instanceGenre->getOneGenre($id);
-       $pageGenre = 'Admin/genreUpdate.html.twig';
-       $template = $this->twig->load($pageGenre);
-       echo $template->render(["genre" => $genre]);
+        }
+        $genre = $instanceGenre->getOneGenre($id);
+        $pageGenre = 'Admin/genreUpdate.html.twig';
+        $template = $this->twig->load($pageGenre);
+        echo $template->render(["genre" => $genre]);
     }
 
     public function genreDelete($id)
@@ -85,7 +85,20 @@ class AdminController extends Controller
         $this->isConnected();
         $instanceGenre = new Genre();
         $instanceGenre->delete($id);
-        header("Location: $this->baseUrl/admin/genre");  
+        header("Location: $this->baseUrl/admin/genre");
+    }
+
+    public function genreAdd()
+    {
+        $this->isConnected();
+        $instanceGenre = new Genre();
+        if (!empty($_POST)) {
+            $instanceGenre->add($_POST["genre"]);
+            header("Location: $this->baseUrl/admin/genre");
+        }
+        $pageGenreAdd = 'Admin/genreAdd.html.twig';
+        $template = $this->twig->load($pageGenreAdd);
+        echo $template->render();
     }
 
     //Méthodes pour Films
@@ -102,16 +115,16 @@ class AdminController extends Controller
 
     public function filmUpdate($id)
     {
-       $this->isConnected();
-       $instanceFilm = new Film();
-       if(!empty($_POST)){
-        $instanceFilm->update($id, $_POST["film"]);
+        $this->isConnected();
+        $instanceFilm = new Film();
+        if (!empty($_POST)) {
+            $instanceFilm->update($id, $_POST["film"]);
             header("Location: $this->baseUrl/admin/film");
-       }
-       $film = $instanceFilm->getOneFilm($id);
-       $pageFilm = 'Admin/filmUpdate.html.twig';
-       $template = $this->twig->load($pageFilm);
-       echo $template->render(["film" => $film]);
+        }
+        $film = $instanceFilm->getOneFilmAdmin($id);
+        $pageFilm = 'Admin/filmUpdate.html.twig';
+        $template = $this->twig->load($pageFilm);
+        echo $template->render(["film" => $film]);
     }
 
     public function filmDelete($id)
@@ -119,7 +132,20 @@ class AdminController extends Controller
         $this->isConnected();
         $instanceFilm = new Film();
         $instanceFilm->delete($id);
-        header("Location: $this->baseUrl/admin/film");  
+        header("Location: $this->baseUrl/admin/film");
+    }
+
+    public function filmAdd()
+    {
+        $this->isConnected();
+        $instanceFilm = new Film();
+        if (!empty($_POST)) {
+            $instanceFilm->add($_POST["film"]);
+            header("Location: $this->baseUrl/admin/film");
+        }
+        $pageFilmAdd = 'Admin/filmAdd.html.twig';
+        $template = $this->twig->load($pageFilmAdd);
+        echo $template->render();
     }
 
     //Méthodes pour Acteurs

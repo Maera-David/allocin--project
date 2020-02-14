@@ -22,11 +22,16 @@ $router->get('/admin/genre','Admin.genre');
 $router->get('/admin/genreUpdate/:id','Admin.genreUpdate');
 $router->post('/admin/genreUpdate/:id','Admin.genreUpdate');
 $router->get('/admin/genreDelete/:id','Admin.genreDelete');
+$router->get('/admin/genreAdd','Admin.genreAdd');
+$router->post('/admin/genreAdd','Admin.genreAdd'); 
 
 //Ajout des routes pour Admin Films
 $router->get('/admin/film','Admin.film');
 $router->get('/admin/filmUpdate/:id','Admin.filmUpdate');
 $router->post('/admin/filmUpdate/:id','Admin.filmUpdate');
+$router->get('/admin/filmDelete/:id','Admin.filmDelete');
+$router->get('/admin/filmAdd','Admin.filmAdd');
+$router->post('/admin/filmAdd','Admin.filmAdd'); 
 
 //Ajout des routes pour Admin Acteurs
 $router->get('/admin/acteur','Admin.acteur');
