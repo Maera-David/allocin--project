@@ -46,4 +46,6 @@ class ArtistController extends Controller
         $template = self::$_twig->load($pageTwig);
         echo $template->render(['actor' => $actor, 'films' => $films]);
     }
+
+    
 }
