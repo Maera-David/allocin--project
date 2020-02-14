@@ -6,7 +6,9 @@
 	<div class="row">
 		{% for film in films|slice(0, 6) %}
 			<div class="col-centered col-sm-4">
-				<a href="{{baseUrl}}/film/{{film.id}}"><img src="{{baseUrl}}/assets/img/film/{{film.affiche}}"></a>
+				<a href="{{baseUrl}}/film/{{film.id}}">
+					<img src="{{baseUrl}}/assets/img/film/{{film.affiche}}">
+				</a>
 			</div>
 		{% endfor %}
 
