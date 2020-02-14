@@ -224,7 +224,7 @@ clear: both;
   background-color: #292929;
   max-width: 500px;
   margin: auto;
-  margin-top: 130px;
+  margin-top: 100px;
   color: #ababab;
   font-family: 'Open Sans', sans-serif;
   font-size: 13px;
@@ -300,3 +300,5 @@ clear: both;
 .astree-cadre p > q:before, .astree-cadre p > q:after {
   content: '';
 }
+
+/*hover effect*/
