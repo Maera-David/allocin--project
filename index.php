@@ -35,6 +35,9 @@ $router->post('/admin/filmAdd','Admin.filmAdd');
 
 //Ajout des routes pour Admin Acteurs
 $router->get('/admin/acteur','Admin.acteur');
+$router->post('/admin/acteurAdd', 'Admin.acteurAdd');
+$router->get('/admin/acteurAdd', 'Admin.acteurAdd');
+$router->get('/admin/acteurUpdate/:id','Admin.acteurUpdate');
 
 //Ajout des routes pour Admin Réalisateurs
 $router->get('/admin/realisateur','Admin.realisateur');

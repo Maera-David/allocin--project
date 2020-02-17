@@ -47,4 +47,25 @@ class Artist extends Model
         $req->execute([$id]);
         return $req->fetch();
     }
+
+    public function delete($id)
+    {
+        $sql = 'DELETE FROM artiste WHERE id = ?';
+        $req = $this->pdo->prepare($sql);
+        $req->execute([$id]);
+    }
+
+    public function add($nom, $prenom, $dateDeNaissance, $biographie, $photo)
+    {
+        $sql = 'INSERT INTO artiste (nom, prenom, date_de_naissance, biographie, photo) VALUES(?, ?, ?, ?, ?)';
+        $req = $this->pdo->prepare($sql);
+        $req->execute([$nom, $prenom, $dateDeNaissance, $biographie, $photo]);
+    }
+    
+    public function update($id, $newValue)
+    {
+        $sql = 'UPDATE artiste SET nom = ? WHERE id = ?';
+        $req = $this->pdo->prepare($sql);
+        $req->execute([$newValue, $id]);
+    }
 }
