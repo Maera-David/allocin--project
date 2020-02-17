@@ -301,4 +301,12 @@ clear: both;
   content: '';
 }
 
-/*hover effect*/
+.hoverdiv{
+  display: none;
+  
+}
+
+.card.bg-dark:hover .hoverdiv {
+  display:block;
+background-color: rgba(0, 0, 0, 0.52);
+}
