@@ -119,6 +119,7 @@ class AdminController extends Controller
         $template = $this->twig->load($pageActeurUpdate);
         echo $template->render(["acteur" => $acteur]);
     }
+    
     public function acteurDelete($id)
     {
         $this->isConnected();
@@ -127,46 +128,71 @@ class AdminController extends Controller
         header("Location: $this->baseUrl/admin/acteur");
     }
 
+
+
     public function acteurAdd()
     {
         $this->isConnected();
-        $instanceArtist = new Artist();
-        if (!empty($_POST)) {
-            //gérer l'upload de file
-            $photo = $_FILES['photo'];
-            $photoTmpName = $_FILES['photo']['tmp_name'];
-            $photoError = $_FILES['photo']['error'];
-            $photoSize = $_FILES['photo']['size'];
-            $photoExt = explode('.', $photo);
-            $photoActualExt = strtolower(end($photoExt));
-
-            $allowed = array('jpg', 'jpeg', 'png', 'pdf');
-
-            if (in_array($photoActualExt, $allowed)) {
-                if ($photoError === 0) {
-                    if ($photoSize < 1000000) {
-                        $photoNew = uniqid(', true') . "." . $photoActualExt;
-                        $photoDestination      = 'unploads/' . $photoNew;
-                        move_uploaded_file($photoTmpName, $photoDestination);
-                        header("Location : $this->baseUrl/asset/img/acteurs/uploadsuccess");
-                    } else {
-                        echo 'votre image est trop grand !';
-                    }
-                } else {
-                    echo 'ya une erreur de téléchargement';
-                }
-            } else {
-                echo " vous ne pouvez pas télécharger des fichiers de ce type ";
-            }
-
-
-            //fin gestion upload de file
-            //$instanceArtist->add($_POST["nom"], $_POST["prenom"], $_POST["date_de_naissance"],  $_POST["biographie"], $_FILES['photo] );
-            //header("Location: $this->baseUrl/admin/acteur");
-            //var_dump($_POST);
-        }
+        $instanceActeur = new Artist();
+       
         $pageActeurAdd = 'Admin/acteurAdd.html.twig';
         $template = $this->twig->load($pageActeurAdd);
         echo $template->render();
     }
+
+    public function acteurAddTraitement()
+    {
+        if (!empty($_POST))
+        {
+            //gérer l'upload de file
+            $photoName = $_FILES['photo']['name'];
+            $photoTmpName = $_FILES['photo']['tmp_name'];
+
+            $photoError = $_FILES['photo']['error'];
+            $photoSize = $_FILES['photo']['size'];
+
+            $photoExt = explode('.', $photoName); // Explose la chaine a chaque point
+            $photoActualExt = strtolower(end($photoExt)); // la derniere partir = extention
+
+            $allowed = array('jpg', 'jpeg', 'png', 'pdf');
+
+            if (in_array($photoActualExt, $allowed))
+            {
+                if ($photoError === 0) 
+                {
+                    if ($photoSize < 1000000) 
+                    {
+                        $photoNew = "". uniqid('true') .".". $photoActualExt ."";
+                        $photoDestination = "assets/img/acteurs/". $photoNew ."";
+
+                        move_uploaded_file($photoTmpName, $photoDestination);
+                        header("Location: $this->baseUrl/admin/acteur");
+                    } else 
+                    {
+                        echo 'votre image est trop grand !';
+                    }
+                } else 
+                {
+                    echo 'ya une erreur de téléchargement';
+                }
+            } else 
+            {
+                echo " vous ne pouvez pas télécharger des fichiers de ce type ";
+            }
+        }
+    }
 }
+    
+
+
+    
+
+
+
+
+            
+
+
+
+
+
