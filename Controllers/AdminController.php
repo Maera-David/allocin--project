@@ -118,7 +118,8 @@ class AdminController extends Controller
         $this->isConnected();
         $instanceFilm = new Film();
         if (!empty($_POST)) {
-            $instanceFilm->update($id, $_POST["film"]);
+            var_dump($_POST);
+            $instanceFilm->updateFilm($id, $_POST["film-titre"], $_POST["film-date"]);
             header("Location: $this->baseUrl/admin/film");
         }
         $film = $instanceFilm->getOneFilmAdmin($id);
@@ -126,6 +127,20 @@ class AdminController extends Controller
         $template = $this->twig->load($pageFilm);
         echo $template->render(["film" => $film]);
     }
+/*
+    public function filmUpdateDate($id)
+    {
+        $this->isConnected();
+        $instanceFilm = new Film();
+        if (!empty($_POST)) {
+            $instanceFilm->updateDate($id, $_POST["film-date"]);
+            header("Location: $this->baseUrl/admin/film");
+        }
+        $film = $instanceFilm->getOneFilmAdmin($id);
+        $pageFilm = 'Admin/filmUpdate.html.twig';
+        $template = $this->twig->load($pageFilm);
+        echo $template->render(["film" => $film]);
+    }*/
 
     public function filmDelete($id)
     {

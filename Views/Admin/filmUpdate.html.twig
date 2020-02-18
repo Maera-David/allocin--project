@@ -1,20 +1,55 @@
-{% extends "Admin/templateAdmin.html.twig" %}
+{% extends 'Admin/templateAdmin.html.twig' %}
 {% block body %}
-<h1> Admin modifier FILMS</h1>
-{#{{ dump(film) }}#}
-    <div class="container center-div shadow mb-5">
-        <div class="heading text-center mb-5 text-uppercase text-white "></div>
-        <div class="container row d-flex flex-row justify-content-center mb-5">
-            <div class="admin-form shadow p-2">
-                <form action="{{baseUrl}}/admin/filmUpdate/{{ film.id }}" method="POST">
-                    <div class="form-group">
-                        <label for="film" class="text-light">FILM:</label>
-                        <input type="text" id="film" name="film" value = "{{ film.titre }}" class="form-control" autocomplete="off">
-                    </div>
-                    <input type="submit" class="btn btn-success" name="form_submit">
-                </form>
-            </div>
-        </div>
-    </div>
+  <h1>
+    Admin modifier FILM
+  </h1>
+  {#{{ dump(film) }} #}
+  <div class="container center-div shadow mb-5">
+    <div class="heading text-center mb-5 text-uppercase text-white"></div>
+    <div class="container row d-flex flex-row justify-content-center mb-5">
+      <div class="admin-form shadow p-2">
+        <form action="{{ baseUrl }}/admin/filmUpdate/{{ film.id }}"
+          method="POST">
+          <div class="form-group">
+            <label for="film-titre" class="text-light">
+              TITRE DE FILM:
+            </label>
+            <input type="text"
+              id="film-titre"
+              name="film-titre"
+              value="{{ film.titre }}"
+              class="form-control"
+              autocomplete="off" />
+          </div>
 
+          <div class="form-group">
+            <label for="film-date" class="text-light">
+              DATE DE SORTIE:
+            </label>
+            <input type="date"
+              id="film-date"
+              name="film-date"
+              value="{{ film.sortie }}"
+              class="form-control"
+              autocomplete="off" />
+          </div>
+
+          <div class="form-group">
+            <label for="film" class="text-light">
+                SYNOPSIS:
+            <textarea id="film-synopsis" name="film-sinopsis" class="form-control" autocomplete="off">"{{ film.synopsis|trim }}"</textarea>
+          </div>
+          {#
+<SELECT name="GENRE" size="1">
+<OPTION>lundi
+<OPTION>mardi
+<OPTION>mercredi
+<OPTION>jeudi
+<OPTION>vendredi
+</SELECT>#}
+          <input type="submit" class="btn btn-success" name="form_submit" />
+        </form>
+      </div>
+    </div>
+  </div>
 {% endblock %}

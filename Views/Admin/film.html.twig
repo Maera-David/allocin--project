@@ -17,6 +17,8 @@
       <tr>
         <th scope="col">{{ film.id }}</th>
         <th scope="col">{{ film.titre }}</th>
+        <th scope="col">{{ film.sortie }}</th>
+        <th scope="col">{{ film.synopsis }}</th>
         <div class = "button" >
           <th><a href="{{baseUrl}}/admin/filmUpdate/{{film.id}}"><button type="button" class="btn btn-primary">Modifier</button></a></th>
           <th><button type="button" class="btn btn-danger" onclick="messageDelete({{film.id}})">Supprimer</button></th>

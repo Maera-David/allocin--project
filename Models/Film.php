@@ -64,12 +64,20 @@ class Film extends Model
         return $film;
     }
     
-    public function update($id, $newValue)
+    
+    public function updateFilm($id, $newValue1, $newValue2)
     {
-        $sql = 'UPDATE film SET titre = ? WHERE id = ?';
+        $sql = 'UPDATE film SET titre = ?, sortie = ? WHERE film.id = ?';
+        $req = $this->pdo->prepare($sql);
+        $req->execute([$newValue1, $newValue2, $id]);
+    }
+
+    /*public function updateDate($id, $newValue)
+    {
+        $sql = 'UPDATE film SET sortie = ? WHERE id = ?';
         $req = $this->pdo->prepare($sql);
         $req->execute([$newValue, $id]);
-    }
+    }*/
 
     public function delete($id)
     {

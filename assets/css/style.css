@@ -1,16 +1,17 @@
+
 *, *::after, *::before {
-    box-sizing: border-box;
+  box-sizing: border-box;
 }
 .navbar
 {
-    background-color:rgb(51, 16, 58);
-    margin-bottom: 20px;
+  background-color:rgb(51, 16, 58);
+  margin-bottom: 20px;
 }
 h1
 {
-    text-align: center;
-    color:rgba(238, 217, 31, 0.986);
-    padding-bottom: 15px;
+  text-align: center;
+  color:rgba(238, 217, 31, 0.986);
+  padding-bottom: 15px;
 }
 body
 {
@@ -18,180 +19,180 @@ background-color: rgba(0, 0, 0, 0.739);
 min-height: 100vh;
 }
 /*.row {
-    display: flex;
-    flex-wrap: wrap;
-    padding: 0 4px;
-  }*/
+  display: flex;
+  flex-wrap: wrap;
+  padding: 0 4px;
+}*/
 
-  .row a {
-    display: inline-block;
-    height: 300px;
-    width: auto;
-    margin-bottom: 15px;
-  }
+.row a {
+  display: inline-block;
+  height: 300px;
+  width: auto;
+  margin-bottom: 15px;
+}
 
-  .row a img {
-    height: 100%;
-    width: auto;
-  }
+.row a img {
+  height: 100%;
+  width: auto;
+}
+
   
-    
+.column {
+  flex: 25%;
+  max-width: 25%;
+  padding: 0 4px;
+}
+
+.column img {
+  margin-top: 8px;
+  vertical-align: middle;
+  width: 50%;
+}
+
+
+
+/*Responsive layout - makes a two column-layout instead of four columns */
+@media screen and (max-width: 800px) {
   .column {
-    flex: 25%;
-    max-width: 25%;
-    padding: 0 4px;
+    flex: 50%;
+    max-width: 50%;
   }
-  
-  .column img {
-    margin-top: 8px;
-    vertical-align: middle;
-    width: 50%;
-  }
+}/*
 
- 
-  
-  /*Responsive layout - makes a two column-layout instead of four columns */
-  @media screen and (max-width: 800px) {
-    .column {
-      flex: 50%;
-      max-width: 50%;
-    }
-  }/*
-  
-  
-   /*Responsive layout - makes the two columns stack on top of each other instead of next to each other */
-  @media screen and (max-width: 500px) {
-    .column {
-      flex: 50%;
-      max-width: 50%;
-    }
-  } 
+
+ /*Responsive layout - makes the two columns stack on top of each other instead of next to each other */
+@media screen and (max-width: 500px) {
+  .column {
+    flex: 50%;
+    max-width: 50%;
+  }
+} 
 
 .page-footer
 {
-    background-color:#4A235A;
-    font-family: 'Gill Sans', 'Gill Sans MT', 'Trebuchet MS', sans-serif, sans-serif;
-    color: white;
-    position: fixed; 
-    bottom: 0px;
-    width:100%; 
-    height:70px;
-    
+  background-color:#4A235A;
+  font-family: 'Gill Sans', 'Gill Sans MT', 'Trebuchet MS', sans-serif, sans-serif;
+  color: white;
+  width:100%; 
+  height:50px;
+  position:relative;
+  bottom:0;
+  
 }
 
 footer {
-  position: absolute;
-  bottom: 0;
+position: absolute;
+bottom: 0;
 }
 
 /********** DEBUT CSS PARTIE FILM **********/
 ::-webkit-scrollbar {
-  width: 4px;
+width: 4px;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #c84a6f;
+background: #c84a6f;
 }
 
 ::-webkit-scrollbar-track {
-  background: #cfcbcc;
+background: #cfcbcc;
 }
 
 /********** PRESENTATION **********/
 ::-webkit-scrollbar {
-  width: 4px;
+width: 4px;
 }
 ::-webkit-scrollbar-thumb {
-  background: #c84a6f;
+background: #c84a6f;
 }
 ::-webkit-scrollbar-track {
-  background: #cfcbcc;
+background: #cfcbcc;
 }
 
 
 /* PRESENTATION */
 .presentation {
-    width: 500px;
-    margin-left: 700px;
-    margin-bottom: 100px;
-    margin-top: 50px;
-    background: url(https://ak7.picdn.net/shutterstock/videos/14044007/thumb/5.jpg);
-    text-align: justify;
-    position: relative;
-    font-family: Calibri, sans-serif;
-    font-weight: bold;
-    color: #858386;
-    padding: 0 0 1%;
+  width: 500px;
+  margin-left: 700px;
+  margin-bottom: 100px;
+  margin-top: 50px;
+  background: url(https://ak7.picdn.net/shutterstock/videos/14044007/thumb/5.jpg);
+  text-align: justify;
+  position: relative;
+  font-family: Calibri, sans-serif;
+  font-weight: bold;
+  color: #858386;
+  padding: 0 0 1%;
 }
 
 .presentation header {
-    /*background: url(https://thumbs.gfycat.com/NeighboringWeepyHornet-size_restricted.gif) no-repeat;*/
-    width: 100%;
-    box-sizing: border-box;
-    padding: 3% 0;
-    text-align: center;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    line-height: .5;
+  /*background: url(https://thumbs.gfycat.com/NeighboringWeepyHornet-size_restricted.gif) no-repeat;*/
+  width: 100%;
+  box-sizing: border-box;
+  padding: 3% 0;
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  line-height: .5;
 }
 
 .presentation header h2 {
-    font-size: 30px;
-    text-transform: uppercase;
-    margin: 0 0 2% 0;
-   color: #9e03ce;
+  font-size: 30px;
+  text-transform: uppercase;
+  margin: 0 0 2% 0;
+ color: #9e03ce;
 }
 
 .presentation header h3 {
-  font-size: 11px;
-  color: whitesmoke;
+font-size: 11px;
+color: whitesmoke;
 }
 
 .presentation .content {
-    margin: 3% auto 0;
-    width: 95%;
+  margin: 3% auto 0;
+  width: 95%;
 }
 
 .presentation .content::after {
-    content: "";
-    display: block;
-    clear: both;
+  content: "";
+  display: block;
+  clear: both;
 }
 
-img.img_presentation {
-    float: left;
-    margin-bottom: 20px;
-    width: 200px;
-    height: 320px;
-    object-fit: cover;
-    border-radius: 15%;
+.img_presentation {
+  float: left;
+  margin-bottom: 20px;
+  width: 200px;
+  height: 320px;
+  object-fit: cover;
+  border-radius: 15%;
 }
 
 .presentation .bloc1, .presentation .bloc2  {
-    background: #4447ff60;
-    border: 1px solid #4447ff60;
-    float: right;
-    width: 55%;
-    margin: 0 0 2%;
-    box-sizing: border-box;
-    padding: 1%;
-    font-size: 15px;
-    color: #fad4ff;
-    margin-top: 10px;
-    border-radius: 10%;
+  background: #4447ff60;
+  border: 1px solid #4447ff60;
+  float: right;
+  width: 55%;
+  margin: 0 0 2%;
+  box-sizing: border-box;
+  padding: 1%;
+  font-size: 15px;
+  color: #fad4ff;
+  margin-top: 10px;
+  border-radius: 10%;
 }
 
 .presentation .bloc2 p {
-    height: 176px;
-    overflow: auto;
-    padding: 0 2% 0;
-    width: 98%;
-    margin: 0 auto;
-    box-sizing: border-box;
+  height: 176px;
+  overflow: auto;
+  padding: 0 2% 0;
+  width: 98%;
+  margin: 0 auto;
+  box-sizing: border-box;
 }
 
 .presentation .bloc1 span {
-  color: #e51a5e;
+color: #e51a5e;
 }
 
 .clear {
@@ -199,22 +200,104 @@ clear: both;
 }
 
 .presentation .histoire {
-    background: #4447ff60;
-    border: 1px solid #4447ff60;
-    min-height: 200px;
-    padding: 2%;
-    box-sizing: border-box;
-    color: #fad4ff;
-    border-radius: 10%;
+  background: #4447ff60;
+  border: 1px solid #4447ff60;
+  min-height: 200px;
+  padding: 2%;
+  box-sizing: border-box;
+  color: #fad4ff;
+  border-radius: 10%;
 }
 
 /*.presentation .img_footer_gauche {
-    position: absolute;
-    left: 0;
-    bottom: 0;
+  position: absolute;
+  left: 0;
+  bottom: 0;
 }
 .presentation .img_footer_droite {
-    position: absolute;
-    right: 0;
-    bottom: 0;
+  position: absolute;
+  right: 0;
+  bottom: 0;
 }*/
+
+/** CSS ACTEUR/REALISATEUR CONTENT **/
+.astree-cadre {
+border: 2px solid #968070;
+background-color: #292929;
+max-width: 500px;
+margin: 20px auto;
+color: #ababab;
+font-family: 'Open Sans', sans-serif;
+font-size: 13px;
+}
+
+.img_acteur {
+/*background:  no-repeat top center;*/
+width: 100%;
+height: 250px;
+}
+
+.astree-cadre a {
+color: #968070;
+text-decoration: none;
+--webkit-transition: all 0.1s ease;
+transition: all 0.1s ease;
+}
+
+.astree-cadre a:hover {
+color: #5b2f32;
+--webkit-transition: alla 0.1s ease;
+transition: all 0.1s ease;
+}
+
+.astree-nom {
+display: block;
+text-align: center;
+margin: -3px  10px;
+color: #968070;
+font-family: 'Cinzel Decorative', serif;
+font-size: 45px;
+line-height: 25px;
+text-shadow: 0 0 2px #000;
+}
+
+.astree-titre {
+border-bottom: 2px solid #968070;
+color: #968070;
+text-shadow: 0 0 2px #000;
+padding: 5px 20px;
+font-family: 'Cinzel Decorative', serif;
+font-size: 30px;
+margin-top: 20px;
+}
+
+.astree-cadre ul {
+list-style: none;
+padding: 0 20px;
+}
+
+.astree-cadre li span {
+font-family: 'Cinzel', serif;
+color: #968070;
+font-size: 16px;
+}
+
+.astree-chapitre {
+display: inline-block;
+font-family: 'Cinzel', serif;
+font-size: 25px;
+color: #968070;
+margin: 25px;
+padding: 5px 15px;
+border-left: 5px solid #968070;
+text-shadow: 0 0 2px #000;
+}
+
+.astree-cadre p {
+margin: 10px 20px;
+text-align: justify;
+}
+
+.astree-cadre p > q:before, .astree-cadre p > q:after {
+content: '';
+}
