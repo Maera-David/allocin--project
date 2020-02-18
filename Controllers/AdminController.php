@@ -128,23 +128,114 @@ class AdminController extends Controller
         header("Location: $this->baseUrl/admin/acteur");
     }
 
-
-
     public function acteurAdd()
     {
         $this->isConnected();
-        $instanceActeur = new Artist();
-       
+        $instanceArtist = new Artist();
+        if (!empty($_POST)) {
+            $photoName = $_FILES['photo']['name'];
+            $photoName = $_FILES['photo']['name'];
+            $photoTmpName = $_FILES['photo']['tmp_name'];
+
+            $photoError = $_FILES['photo']['error'];
+            $photoSize = $_FILES['photo']['size'];
+
+            $photoExt = explode('.', $photoName); // Explose la chaine a chaque point
+            $photoActualExt = strtolower(end($photoExt)); // la derniere partir = extention
+
+            $allowed = array('jpg', 'jpeg', 'png');
+
+            if (in_array($photoActualExt, $allowed))
+            {
+                if ($photoError === 0) 
+                {
+                    if ($photoSize < 1000000) 
+                    {
+                        $photoNew = uniqid('true') .".". $photoActualExt;
+                        $photoDestination = "assets/img/acteurs/". $photoNew;
+
+                        move_uploaded_file($photoTmpName, $photoDestination);
+                        $instanceArtist->add($_POST["nom"],$_POST["prenom"], $_POST["dateDeNaissance"], $_POST["biographie"], $photoNew);
+                        header("Location: $this->baseUrl/admin/acteur");
+                    } else 
+                    {
+                        echo 'votre image est trop grand !';
+                    }
+                }else 
+                {
+                    echo 'ya une erreur de téléchargement';
+                }
+            } else 
+            {
+                echo " vous ne pouvez pas télécharger des fichiers de ce type ";
+            }
+
+        }
         $pageActeurAdd = 'Admin/acteurAdd.html.twig';
         $template = $this->twig->load($pageActeurAdd);
         echo $template->render();
+        
     }
+}
+            
+        
+    
+                    //gérer l'upload de file
+                 
+                 
+           /* $photoName = $_FILES['photo']['name'];
+            $photoTmpName = $_FILES['photo']['tmp_name'];
 
-    public function acteurAddTraitement()
+            $photoError = $_FILES['photo']['error'];
+            $photoSize = $_FILES['photo']['size'];
+
+            $photoExt = explode('.', $photoName); // Explose la chaine a chaque point
+            $photoActualExt = strtolower(end($photoExt)); // la derniere partir = extention
+
+            $allowed = array('jpg', 'jpeg', 'png', 'pdf');
+
+            if (in_array($photoActualExt, $allowed))
+            {
+                if ($photoError === 0) 
+                {
+                    if ($photoSize < 1000000) 
+                    {
+                        $photoNew = "". uniqid('true') .".". $photoActualExt ."";
+                        $photoDestination = "assets/img/acteurs/". $photoNew ."";
+
+                        move_uploaded_file($photoTmpName, $photoDestination);
+                        header("Location: $this->baseUrl/admin/acteur");
+                    } else 
+                    {
+                        echo 'votre image est trop grand !';
+                    }
+                }else 
+                {
+                    echo 'ya une erreur de téléchargement';
+                }
+            } else 
+            {
+                echo " vous ne pouvez pas télécharger des fichiers de ce type ";
+            }
+        
+        
+        
+        $pageActeurAdd = 'Admin/acteurAdd.html.twig';
+        $template = $this->twig->load($pageActeurAdd);
+        echo $template->render();
+        
+        }
+    }
+}*/
+
+
+
+    /*public function acteurAddTraitement()
     {
         if (!empty($_POST))
         {
-            //gérer l'upload de file
+            var_dump($_POST);
+            /*gérer l'upload de file
             $photoName = $_FILES['photo']['name'];
             $photoTmpName = $_FILES['photo']['tmp_name'];
 
@@ -180,9 +271,9 @@ class AdminController extends Controller
                 echo " vous ne pouvez pas télécharger des fichiers de ce type ";
             }
         }
-    }
-}
-    
+    }*/
+
+  
 
 
     
