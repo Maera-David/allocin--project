@@ -30,6 +30,7 @@
 
 {% endblock %}
 {% block javascript %}
+{{parent()}}
 <script>
 function messageDelete(id){
     if ( confirm( "êtes vous sur de vouloir supprimer" ) ) {
