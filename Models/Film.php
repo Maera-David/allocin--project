@@ -25,8 +25,6 @@ class Film extends Model
         return $film;
     }
 
-  
-
     public function getAllFilmByOneReal($id)
     {
         $sql = 'SELECT * FROM film WHERE artiste_id = ?';
@@ -64,20 +62,12 @@ class Film extends Model
         return $film;
     }
     
-    
-    public function updateFilm($id, $newValue1, $newValue2)
+    public function updateFilm($id, $titre, $sortie, $synopsis, $gentre)
     {
-        $sql = 'UPDATE film SET titre = ?, sortie = ? WHERE film.id = ?';
+        $sql = 'UPDATE film SET titre = ?, sortie = ?, synopsis = ?, genre_id = ? WHERE film.id = ?';
         $req = $this->pdo->prepare($sql);
-        $req->execute([$newValue1, $newValue2, $id]);
+        $req->execute([$titre, $sortie, $synopsis, $gentre, $id]);
     }
-
-    /*public function updateDate($id, $newValue)
-    {
-        $sql = 'UPDATE film SET sortie = ? WHERE id = ?';
-        $req = $this->pdo->prepare($sql);
-        $req->execute([$newValue, $id]);
-    }*/
 
     public function delete($id)
     {

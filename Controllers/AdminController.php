@@ -107,7 +107,6 @@ class AdminController extends Controller
         $this->isConnected();
         $film = new Film();
         $films = $film->getAllFilm();
-        //var_dump($films);
         $pageFilm = 'Admin/film.html.twig';
         $template = $this->twig->load($pageFilm);
         echo $template->render(["session" => $_SESSION, 'films' => $films]);
@@ -118,29 +117,17 @@ class AdminController extends Controller
         $this->isConnected();
         $instanceFilm = new Film();
         if (!empty($_POST)) {
-            var_dump($_POST);
-            $instanceFilm->updateFilm($id, $_POST["film-titre"], $_POST["film-date"]);
+            $instanceFilm->updateFilm($id, $_POST["film-titre"], $_POST["film-date"], $_POST["film-synopsis"], $_POST["film-genre"]);
             header("Location: $this->baseUrl/admin/film");
         }
         $film = $instanceFilm->getOneFilmAdmin($id);
+        $instanceGenre = new Genre();
+        $genres = $instanceGenre->getAllGenre();
+
         $pageFilm = 'Admin/filmUpdate.html.twig';
         $template = $this->twig->load($pageFilm);
-        echo $template->render(["film" => $film]);
+        echo $template->render(["film" => $film, "genres" => $genres]);
     }
-/*
-    public function filmUpdateDate($id)
-    {
-        $this->isConnected();
-        $instanceFilm = new Film();
-        if (!empty($_POST)) {
-            $instanceFilm->updateDate($id, $_POST["film-date"]);
-            header("Location: $this->baseUrl/admin/film");
-        }
-        $film = $instanceFilm->getOneFilmAdmin($id);
-        $pageFilm = 'Admin/filmUpdate.html.twig';
-        $template = $this->twig->load($pageFilm);
-        echo $template->render(["film" => $film]);
-    }*/
 
     public function filmDelete($id)
     {

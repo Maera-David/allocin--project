@@ -35,18 +35,26 @@
           </div>
 
           <div class="form-group">
-            <label for="film" class="text-light">
+            <label for="film-synopsis" class="text-light">
                 SYNOPSIS:
-            <textarea id="film-synopsis" name="film-sinopsis" class="form-control" autocomplete="off">"{{ film.synopsis|trim }}"</textarea>
+            </label> 
+            <textarea id="film-synopsis" name="film-synopsis" class="form-control" autocomplete="off">{{ film.synopsis }}</textarea>
           </div>
-          {#
-<SELECT name="GENRE" size="1">
-<OPTION>lundi
-<OPTION>mardi
-<OPTION>mercredi
-<OPTION>jeudi
-<OPTION>vendredi
-</SELECT>#}
+
+          <div class="form-group">
+            <label for="film-genre" class="text-light">
+                GENRE:
+            </label> 
+            <select name = "film-genre"  size="1" >
+            
+              {% for genre in genres %} 
+              <option id="film-genre" name="film-genre" value="{{ genre.id }}" class="form-control" {% if film.genre_id == genre.id %}selected{% endif %} >
+              {{ genre.nom }}
+              </option>
+               {% endfor %}
+              </select>
+          </div>
+
           <input type="submit" class="btn btn-success" name="form_submit" />
         </form>
       </div>
