@@ -68,4 +68,15 @@ class Artist extends Model
         $req = $this->pdo->prepare($sql);
         $req->execute([$newValue, $id]);
     }
+
+// Partie Admin
+    public function getAllArtist()
+    {
+        $sql = 'SELECT * FROM artiste';
+        $req = $this->pdo->prepare($sql);
+        $req->execute();
+        $artist = $req->fetchAll();
+        return $artist;
+    }
+
 }

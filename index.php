@@ -27,8 +27,8 @@ $router->post('/admin/genreAdd','Admin.genreAdd');
 
 //Ajout des routes pour Admin Films
 $router->get('/admin/film','Admin.film');
-$router->get('/admin/filmUpdate/:id','Admin.filmUpdate');
 $router->post('/admin/filmUpdate/:id','Admin.filmUpdate');
+$router->get('/admin/filmUpdate/:id','Admin.filmUpdate');
 
 $router->get('/admin/filmDelete/:id','Admin.filmDelete');
 $router->get('/admin/filmAdd','Admin.filmAdd');

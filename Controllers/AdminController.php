@@ -117,16 +117,19 @@ class AdminController extends Controller
         $this->isConnected();
         $instanceFilm = new Film();
         if (!empty($_POST)) {
-            $instanceFilm->updateFilm($id, $_POST["film-titre"], $_POST["film-date"], $_POST["film-synopsis"], $_POST["film-genre"]);
+            $instanceFilm->updateFilm($id, $_POST["film-titre"], $_POST["film-date"], $_POST["film-synopsis"], $_POST["film-genre"], $_POST["film-artiste"]);
             header("Location: $this->baseUrl/admin/film");
         }
         $film = $instanceFilm->getOneFilmAdmin($id);
         $instanceGenre = new Genre();
         $genres = $instanceGenre->getAllGenre();
 
+        $instanceArtist = new Artist();
+        $artists = $instanceArtist->getAllArtist();
+
         $pageFilm = 'Admin/filmUpdate.html.twig';
         $template = $this->twig->load($pageFilm);
-        echo $template->render(["film" => $film, "genres" => $genres]);
+        echo $template->render(["film" => $film, "genres" => $genres, "artistes" => $artists]);
     }
 
     public function filmDelete($id)
@@ -142,22 +145,103 @@ class AdminController extends Controller
         $this->isConnected();
         $instanceFilm = new Film();
         if (!empty($_POST)) {
-            $instanceFilm->add($_POST["film"]);
+            $instanceFilm->add($_POST["film-titre"], $_POST["film-date"], $_POST["film-synopsis"], $_POST["film-genre"], $_POST["film-artiste"]);
             header("Location: $this->baseUrl/admin/film");
         }
+        $instanceGenre = new Genre();
+        $genres = $instanceGenre->getAllGenre();
+
+        $instanceArtist = new Artist();
+        $artists = $instanceArtist->getAllArtist();
         $pageFilmAdd = 'Admin/filmAdd.html.twig';
         $template = $this->twig->load($pageFilmAdd);
-        echo $template->render();
+        echo $template->render(["genres" => $genres, "artistes" => $artists]);
     }
-
-    //Méthodes pour Acteurs
-    /*public function acteur()
+/*
+    public function filmAddAffiche()
     {
         $this->isConnected();
-        $pageActeur = 'Admin/acteur.html.twig';
-        $template = $this->twig->load($pageActeur);
-        echo $template->render(["session" => $_SESSION]);
-    }*/
+        $instanceFilm = new Film();
+        if (!empty($_POST)) {
+            $file = $_FILES['film-affiche'];
+            $fileName = $_FILES['film-affiche']['name'];
+            $fileTmpName = $_FILES['film-affiche']['tmp_name'];
+            $fileSize = $_FILES['film-affiche']['size'];
+            $fileError = $_FILES['film-affiche']['error'];
+            $fileType = $_FILES['film-affiche']['type'];
+
+            $fileExt = explode('.', $fileName);
+            $fileActualExt = strtolower(end($fileExt));
+
+            $allowed = array('jpg', 'jpeg', 'png');
+
+            $instanceFilm->uploadAffiche($_POST["film-titre"], $_POST["film-date"], $_POST["film-synopsis"], $_POST["film-genre"], $_POST["film-artiste"]);
+            header("Location: $this->baseUrl/admin/film");
+        }
+        $instanceGenre = new Genre();
+        $genres = $instanceGenre->getAllGenre();
+
+        $instanceArtist = new Artist();
+        $artists = $instanceArtist->getAllArtist();
+
+        $pageFilmAdd = 'Admin/filmAdd.html.twig';
+        $template = $this->twig->load($pageFilmAdd);
+        echo $template->render(["genres" => $genres, "artistes" => $artists]);
+    }
+
+
+    -----------
+    
+    public function acteurAdd()
+    {
+        $this->isConnected();
+        $instanceArtist = new Artist();
+        if (!empty($_POST)) {
+            $photoName = $_FILES['photo']['name'];
+            $photoName = $_FILES['photo']['name'];
+            $photoTmpName = $_FILES['photo']['tmp_name'];
+
+            $photoError = $_FILES['photo']['error'];
+            $photoSize = $_FILES['photo']['size'];
+
+            $photoExt = explode('.', $photoName); // Explose la chaine a chaque point
+            $photoActualExt = strtolower(end($photoExt)); // la derniere partir = extention
+
+            $allowed = array('jpg', 'jpeg', 'png');
+
+            if (in_array($photoActualExt, $allowed))
+            {
+                if ($photoError === 0) 
+                {
+                    if ($photoSize < 1000000) 
+                    {
+                        $photoNew = uniqid('true') .".". $photoActualExt;
+                        $photoDestination = "assets/img/acteurs/". $photoNew;
+
+                        move_uploaded_file($photoTmpName, $photoDestination);
+                        $instanceArtist->add($_POST["nom"],$_POST["prenom"], $_POST["dateDeNaissance"], $_POST["biographie"], $photoNew);
+                        header("Location: $this->baseUrl/admin/acteur");
+                    } else 
+                    {
+                        echo 'votre image est trop grand !';
+                    }
+                }else 
+                {
+                    echo 'ya une erreur de téléchargement';
+                }
+            } else 
+            {
+                echo " vous ne pouvez pas télécharger des fichiers de ce type ";
+            }
+
+        }
+        $pageActeurAdd = 'Admin/acteurAdd.html.twig';
+        $template = $this->twig->load($pageActeurAdd);
+        echo $template->render();
+        
+    }
+---------------
+*/
 
     public function acteur()
     {
@@ -238,38 +322,3 @@ class AdminController extends Controller
         echo $template->render(["session" => $_SESSION]);
     }
 }
-
- 
-
-
-
-
-
-
-
-
-
-
-
-/*class Form
- {
-    public function __construct()
-{
-    $nom = "";
-    $password = "";
-}
-    public function form(){
-if (isset($_POST ['form_submit']) && $_POST['user'] != "" && $_POST['password'] != "")
-{
-   $nom = $_POST['user'];
-   $password = $_POST['password'];
-   echo "<p>Nom : $nom, password : ". $password ."</p>" ;
-}
-else
-{
-    echo "merci de remplir tous les champs du formulaire<br>";
-    $nom = "";
-    $password = "";
-    }
- }
-}*/

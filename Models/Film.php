@@ -62,11 +62,11 @@ class Film extends Model
         return $film;
     }
     
-    public function updateFilm($id, $titre, $sortie, $synopsis, $gentre)
+    public function updateFilm($id, $titre, $sortie, $synopsis, $genre, $artiste)
     {
-        $sql = 'UPDATE film SET titre = ?, sortie = ?, synopsis = ?, genre_id = ? WHERE film.id = ?';
+        $sql = 'UPDATE film SET titre = ?, sortie = ?, synopsis = ?, genre_id = ?, artiste_id = ? WHERE film.id = ?';
         $req = $this->pdo->prepare($sql);
-        $req->execute([$titre, $sortie, $synopsis, $gentre, $id]);
+        $req->execute([$titre, $sortie, $synopsis, $genre, $artiste, $id]);
     }
 
     public function delete($id)
@@ -76,10 +76,10 @@ class Film extends Model
         $req->execute([$id]);
     }
 
-    public function add($titre)
+    public function add($titre, $sortie, $synopsis, $genre, $artiste)
     {
-        $sql = 'INSERT INTO film (titre) VALUES(?)';
+        $sql = 'INSERT INTO film (titre, sortie, synopsis, genre_id, artiste_id) VALUES(?, ?, ?, ?, ?)';
         $req = $this->pdo->prepare($sql);
-        $req->execute([$titre]);
+        $req->execute([$titre, $sortie, $synopsis, $genre, $artiste]);
     }
 }

@@ -19,7 +19,7 @@
               name="film-titre"
               value="{{ film.titre }}"
               class="form-control"
-              autocomplete="off" />
+              autocomplete="off" >
           </div>
 
           <div class="form-group">
@@ -31,7 +31,7 @@
               name="film-date"
               value="{{ film.sortie }}"
               class="form-control"
-              autocomplete="off" />
+              autocomplete="off" >
           </div>
 
           <div class="form-group">
@@ -55,7 +55,20 @@
               </select>
           </div>
 
-          <input type="submit" class="btn btn-success" name="form_submit" />
+          <div class="form-group">
+            <label for="film-artiste" class="text-light">
+                REALISATEUR:
+            </label> 
+            <select name = "film-artiste"  size="1" >
+            
+              {% for artiste in artistes %} 
+              <option id="film-artiste" name="film-artiste" value="{{ artiste.id }}" class="form-control" {% if film.artiste_id == artiste.id %}selected{% endif %} >
+              {{ artiste.prenom }} {{ artiste.nom }}
+              </option>
+               {% endfor %}
+              </select>
+          </div>
+          <input type="submit" class="btn btn-success" name="form_submit" >
         </form>
       </div>
     </div>
