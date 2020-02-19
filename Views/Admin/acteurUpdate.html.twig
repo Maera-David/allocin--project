@@ -14,7 +14,7 @@
                         <label for="genre" class="text-light">Date de naissance:</label>
                         <input type="text" id="artiste" name="artiste" value="{{ acteur.date_de_naissance }}" class="form-control" autocomplete="off">
                         <label for="genre" class="text-light">Biographie:</label>
-                        <input type="text" id="artiste" name="artiste" value="{{ acteur.biographie }}" class="form-control" autocomplete="off">
+                        <textarea class="form-control"  type="text" id="artiste" name="artiste">{{ acteur.biographie }}</textarea>
                     </div>
                     <input type="submit" class="btn btn-success" name="form_submit">
                 </form>

@@ -195,6 +195,18 @@ class AdminController extends Controller
         $template = $this->twig->load($pageRole);
         echo $template->render();
     }
+    public function roleAdd()
+    {
+        $pageRoleAdd = 'Admin/roleAdd.html.twig';
+        $template = $this->twig->load($pageRoleAdd);
+        echo $template->render();
+    }
+    public function roleUpdate()
+    {
+        $pageRoleUpdate = 'Admin/roleUpdate.html.twig';
+        $template = $this->twig->load($pageRoleUpdate);
+        echo $template->render();
+    }
 }
         
 
