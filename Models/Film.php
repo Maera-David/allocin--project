@@ -76,10 +76,11 @@ class Film extends Model
         $req->execute([$id]);
     }
 
-    public function add($titre, $sortie, $synopsis, $genre, $artiste)
+    public function add($titre, $sortie, $synopsis, $genre, $artiste, $affiche)
     {
-        $sql = 'INSERT INTO film (titre, sortie, synopsis, genre_id, artiste_id) VALUES(?, ?, ?, ?, ?)';
+        $sql = 'INSERT INTO film (titre, sortie, synopsis, genre_id, artiste_id, affiche) VALUES(?, ?, ?, ?, ?, ?)';
         $req = $this->pdo->prepare($sql);
-        $req->execute([$titre, $sortie, $synopsis, $genre, $artiste]);
+        $req->execute([$titre, $sortie, $synopsis, $genre, $artiste, $affiche]);
     }
+
 }

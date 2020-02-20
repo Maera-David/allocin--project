@@ -3,11 +3,13 @@
 <h1> Admin ajouter FILM</h1>
 
     <div class="container center-div shadow mb-5">
-        <div class="heading text-center mb-5 text-uppercase text-white "></div>
+      <div class="heading text-center mb-5 text-uppercase text-white ">
+      </div>
         <div class="container row d-flex flex-row justify-content-center mb-5">
-            <div class="admin-form shadow p-2">
-                <form action="{{baseUrl}}/admin/filmAdd" method="POST" enctype = "multipart/form-data">
-                    <div class="form-group">
+          <div class="admin-form shadow p-2">
+            <form action="{{baseUrl}}/admin/filmAdd" method="POST" enctype = "multipart/form-data">
+
+          <div class="form-group">
             <label for="film-titre" class="text-light">
               TITRE DE FILM:
             </label>
@@ -67,8 +69,9 @@
               </select>
           </div>
 
-          <label for="film-affiche" class="text-light">
-              AFFUCHE:
+          <div class="form-group">
+            <label for="film-affiche" class="text-light">
+              AFFICHE:
             </label>
             <input type="file"
               id="film-affiche"
@@ -77,9 +80,10 @@
               class="form-control"
               autocomplete="off">
           </div>
-                    <input type="submit" class="btn btn-success" name="form_submit">
-                </form>
-            </div>
+          
+            <input type="submit" class="btn btn-success" name="form_submit">
+            </form>
+          </div>
         </div>
     </div>
 

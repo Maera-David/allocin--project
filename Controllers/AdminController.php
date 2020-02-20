@@ -55,6 +55,29 @@ class AdminController extends Controller
         echo $template->render(["session" => $_SESSION]);
     }
 
+    //Fonction pour upload files 
+    private function uploadFiles($name, $destination)
+    {
+        $photoName = $_FILES[$name]['name'];
+        $photoTmpName = $_FILES[$name]['tmp_name'];
+        $photoError = $_FILES[$name]['error'];
+        $photoSeize = $_FILES[$name]['size'];
+
+        $photoExt = explode('.', $photoName); // Explode la chaine a chaque point
+        $photoActualExt = strtolower(end($photoExt)); // la derniere partie = extention
+
+        $allowed = array('jpg', 'jpeg', 'png');
+
+        if (in_array($photoActualExt, $allowed) && ($photoError == 0) && ($photoSeize < 1000000)) {
+            $photoNew = uniqid('', true) . "." . $photoActualExt;
+            $photoDestination = "assets/img/" . $destination . "/" . $photoNew;
+            move_uploaded_file($photoTmpName, $photoDestination);
+            return $photoNew;
+        } else {
+            return NULL;
+        }
+    }
+
     //Méthodes pour Genre 
     public function genre()
     {
@@ -144,40 +167,13 @@ class AdminController extends Controller
     {
         $this->isConnected();
         $instanceFilm = new Film();
+
         if (!empty($_POST)) {
-            $instanceFilm->add($_POST["film-titre"], $_POST["film-date"], $_POST["film-synopsis"], $_POST["film-genre"], $_POST["film-artiste"]);
-            header("Location: $this->baseUrl/admin/film");
+            $fileNameNew = $this->uploadFiles('film-affiche', 'film');
+            $instanceFilm->add($_POST["film-titre"], $_POST["film-date"], $_POST["film-synopsis"], $_POST["film-genre"], $_POST["film-artiste"], $fileNameNew);
+            header("Location: $this->baseUrl/admin/film?uploadsuccrss");
         }
-        $instanceGenre = new Genre();
-        $genres = $instanceGenre->getAllGenre();
 
-        $instanceArtist = new Artist();
-        $artists = $instanceArtist->getAllArtist();
-        $pageFilmAdd = 'Admin/filmAdd.html.twig';
-        $template = $this->twig->load($pageFilmAdd);
-        echo $template->render(["genres" => $genres, "artistes" => $artists]);
-    }
-/*
-    public function filmAddAffiche()
-    {
-        $this->isConnected();
-        $instanceFilm = new Film();
-        if (!empty($_POST)) {
-            $file = $_FILES['film-affiche'];
-            $fileName = $_FILES['film-affiche']['name'];
-            $fileTmpName = $_FILES['film-affiche']['tmp_name'];
-            $fileSize = $_FILES['film-affiche']['size'];
-            $fileError = $_FILES['film-affiche']['error'];
-            $fileType = $_FILES['film-affiche']['type'];
-
-            $fileExt = explode('.', $fileName);
-            $fileActualExt = strtolower(end($fileExt));
-
-            $allowed = array('jpg', 'jpeg', 'png');
-
-            $instanceFilm->uploadAffiche($_POST["film-titre"], $_POST["film-date"], $_POST["film-synopsis"], $_POST["film-genre"], $_POST["film-artiste"]);
-            header("Location: $this->baseUrl/admin/film");
-        }
         $instanceGenre = new Genre();
         $genres = $instanceGenre->getAllGenre();
 
@@ -189,60 +185,7 @@ class AdminController extends Controller
         echo $template->render(["genres" => $genres, "artistes" => $artists]);
     }
 
-
-    -----------
-    
-    public function acteurAdd()
-    {
-        $this->isConnected();
-        $instanceArtist = new Artist();
-        if (!empty($_POST)) {
-            $photoName = $_FILES['photo']['name'];
-            $photoName = $_FILES['photo']['name'];
-            $photoTmpName = $_FILES['photo']['tmp_name'];
-
-            $photoError = $_FILES['photo']['error'];
-            $photoSize = $_FILES['photo']['size'];
-
-            $photoExt = explode('.', $photoName); // Explose la chaine a chaque point
-            $photoActualExt = strtolower(end($photoExt)); // la derniere partir = extention
-
-            $allowed = array('jpg', 'jpeg', 'png');
-
-            if (in_array($photoActualExt, $allowed))
-            {
-                if ($photoError === 0) 
-                {
-                    if ($photoSize < 1000000) 
-                    {
-                        $photoNew = uniqid('true') .".". $photoActualExt;
-                        $photoDestination = "assets/img/acteurs/". $photoNew;
-
-                        move_uploaded_file($photoTmpName, $photoDestination);
-                        $instanceArtist->add($_POST["nom"],$_POST["prenom"], $_POST["dateDeNaissance"], $_POST["biographie"], $photoNew);
-                        header("Location: $this->baseUrl/admin/acteur");
-                    } else 
-                    {
-                        echo 'votre image est trop grand !';
-                    }
-                }else 
-                {
-                    echo 'ya une erreur de téléchargement';
-                }
-            } else 
-            {
-                echo " vous ne pouvez pas télécharger des fichiers de ce type ";
-            }
-
-        }
-        $pageActeurAdd = 'Admin/acteurAdd.html.twig';
-        $template = $this->twig->load($pageActeurAdd);
-        echo $template->render();
-        
-    }
----------------
-*/
-
+    //Méthodes pour acteurs
     public function acteur()
     {
         $this->isConnected();
@@ -262,6 +205,7 @@ class AdminController extends Controller
         $template = $this->twig->load($pageActeurUpdate);
         echo $template->render(["acteur" => $acteur]);
     }
+
     public function acteurDelete($id)
     {
         $this->isConnected();
@@ -275,38 +219,9 @@ class AdminController extends Controller
         $this->isConnected();
         $instanceArtist = new Artist();
         if (!empty($_POST)) {
-            //gérer l'upload de file
-            $photo = $_FILES['photo'];
-            $photoTmpName = $_FILES['photo']['tmp_name'];
-            $photoError = $_FILES['photo']['error'];
-            $photoSize = $_FILES['photo']['size'];
-            $photoExt = explode('.', $photo);
-            $photoActualExt = strtolower(end($photoExt));
-
-            $allowed = array('jpg', 'jpeg', 'png', 'pdf');
-
-            if (in_array($photoActualExt, $allowed)) {
-                if ($photoError === 0) {
-                    if ($photoSize < 1000000) {
-                        $photoNew = uniqid(', true') . "." . $photoActualExt;
-                        $photoDestination      = 'unploads/' . $photoNew;
-                        move_uploaded_file($photoTmpName, $photoDestination);
-                        header("Location : $this->baseUrl/asset/img/acteurs/uploadsuccess");
-                    } else {
-                        echo 'votre image est trop grand !';
-                    }
-                } else {
-                    echo 'ya une erreur de téléchargement';
-                }
-            } else {
-                echo " vous ne pouvez pas télécharger des fichiers de ce type ";
-            }
-
-
-            //fin gestion upload de file
-            //$instanceArtist->add($_POST["nom"], $_POST["prenom"], $_POST["date_de_naissance"],  $_POST["biographie"], $_FILES['photo] );
-            //header("Location: $this->baseUrl/admin/acteur");
-            //var_dump($_POST);
+            $photoNew = $this->uploadFiles('photo', 'acteurs');
+            $instanceArtist->add($_POST["nom"], $_POST["prenom"], $_POST["dateDeNaissance"], $_POST["biographie"], $photoNew);
+            header("Location: $this->baseUrl/admin/acteur");
         }
         $pageActeurAdd = 'Admin/acteurAdd.html.twig';
         $template = $this->twig->load($pageActeurAdd);
