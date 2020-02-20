@@ -6,50 +6,25 @@
 {% block body %}
 
 <h1>PAGE ADMIN ROLE</h1>
-<a href="{{baseUrl}}/admin/roleAdd"><button type="button" class="btn btn-primary btn-lg btn-block">Ajouter un Role</button></a>
+
+<a href="{{baseUrl}}/admin/roleAdd"><button type="button" class="btn btn-primary btn-lg btn-block">Ajouter un film</button></a>
 <table class="table table-striped table-dark">
   <thead>  
       <th scope="col">ID</th>
-      <th scope="col">Role</th>
-      {% for role in roles|reverse %} 
+      <th scope="col">TITRE</th>
+      {% for film in films |reverse %} 
       <tr>
-        <th scope="col">{{ role.id }}</th>
-        <th scope="col">{{ role.nom }}</th>
+        <th scope="col">{{ film.id }}</th>
+        <th scope="col">{{ film.titre }}</th>
         <div class = "button" >
-          <th><a href="{{baseUrl}}/admin/roleUpdate/{{role.id}}"><button type="button" class="btn btn-primary">Modifier</button></a></th>
-          <th><button type="button" class="btn btn-danger" onclick="messageDelete({{role.id}})">Supprimer</button></th>
+          <th><a href="{{baseUrl}}/admin/roleUpdate/{{film.id}}"><button type="button" class="btn btn-primary">Modifier</button></a></th>
+          <th><button type="button" class="btn btn-danger" onclick="messageDelete({{film.id}})">Supprimer</button></th>
         </div> 
       </tr>
     {% endfor %}
-      
   </thead>
-  <tbody>
-    <tr>
-      <th scope="row">1</th>
-      <td>Mark</td>
-      <td>Otto</td>
-      <td>@mdo</td>
-      <th><a href="{{baseUrl}}/admin/roleUpdate/"><button type="button" class="btn btn-primary">Modifier</button></a></th>
-       <th><button type="button" class="btn btn-danger" onclick="#">Supprimer</button></th>
-    </tr>
-    <tr>
-      <th scope="row">2</th>
-      <td>Jacob</td>
-      <td>Thornton</td>
-      <td>@fat</td>
-      <th><a href="{{baseUrl}}/admin/roleUpdate/"><button type="button" class="btn btn-primary">Modifier</button></a></th>
-      <th><button type="button" class="btn btn-danger" onclick="#">Supprimer</button></th>
-    </tr>
-    <tr>
-      <th scope="row">3</th>
-      <td>Larry</td>
-      <td>the Bird</td>
-      <td>@twitter</td>
-      <th><a href="{{baseUrl}}/admin/roleUpdate/"><button type="button" class="btn btn-primary">Modifier</button></a></th>
-      <th><button type="button" class="btn btn-danger" onclick="messageDelete({{role.id}})">Supprimer</button></th>
-    </tr> 
-  </tbody>
 </table>
+      
 
 {% endblock %}
 {% block javascript %}

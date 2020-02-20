@@ -26,5 +26,7 @@
         </div>
     </div>
 
-
+{% if error is not empty %}
+<p class="text-center">{{ error }}</p>
+{% endif %}
 {% endblock %}

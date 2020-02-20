@@ -32,8 +32,8 @@ $router->get('/admin/acteurUpdate/:id','Admin.acteurUpdate');
 $router->get('/admin/role','Admin.role');
 $router->post('/admin/roleAdd','Admin.roleAdd');
 $router->get('/admin/roleAdd','Admin.roleAdd');
-$router->post('/admin/roleUpdate', 'Admin.roleUpdate');
-$router->get('/admin/roleUpdate', 'Admin.roleUpdate');
+$router->post('/admin/roleUpdate/:id', 'Admin.roleUpdate');
+$router->get('/admin/roleUpdate/:id', 'Admin.roleUpdate');
 $router->get('/admin/film','Admin.film');
 
 

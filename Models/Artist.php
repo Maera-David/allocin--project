@@ -17,7 +17,7 @@ class Artist extends Model
 
     public function getActorsFromOneFilm($id)
     {
-        $sql = 'SELECT artiste.nom, artiste.prenom, film_has_artiste.role FROM artiste, film, film_has_artiste WHERE film.id = ? AND film.id = film_has_artiste.film_id AND film_has_artiste.artiste_id = artiste.id';
+        $sql = 'SELECT artiste.id, artiste.nom, artiste.prenom, film_has_artiste.role FROM artiste, film, film_has_artiste WHERE film.id = ? AND film.id = film_has_artiste.film_id AND film_has_artiste.artiste_id = artiste.id';
         $req = $this->pdo->prepare($sql);
         $req->execute([$id]);
         return $req->fetchAll();
@@ -66,5 +66,13 @@ class Artist extends Model
         $sql = 'UPDATE artiste SET nom = ? WHERE id = ?';
         $req = $this->pdo->prepare($sql);
         $req->execute([$newValue, $id]);
+    }
+     
+    public function getAllArtist()
+    {
+        $sql = 'SELECT * FROM artiste';
+        $req = $this->pdo->prepare($sql);
+        $req->execute();
+        return $req->fetchAll();
     }
 }

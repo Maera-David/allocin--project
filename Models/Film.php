@@ -42,4 +42,12 @@ class Film extends Model
         $films = $req->fetchAll();
         return $films;
     }
+    public function getAllFilm()
+    {
+        $sql = 'SELECT * FROM film';
+        $req = $this->pdo->prepare($sql);
+        $req->execute();
+        $film = $req->fetchAll();
+        return $film;
+    }
 }

@@ -1,30 +1,42 @@
 {% extends "Admin/templateAdmin.html.twig" %}
 {% block body %}
-<h1> Admin modifier un ROLE</h1>
+	<h1>
+		Admin modifier un ROLE</h1>
 
 
-    <div class="container center-div shadow mb-5">
-        <div class="heading text-center mb-5 text-uppercase text-white "></div>
-        <div class="container row d-flex flex-row justify-content-center mb-5">
-            <div class="admin-form shadow p-2">
-                <form enctype ="multipart/form-data" action="{{baseUrl}}/admin/acteurAdd" method="POST">
-                    <div class="form-group">
-                        <label for="genre" class="text-light">Nom:</label>
-                        <input type="text" id="artist" name="nom" value="" class="form-control" autocomplete="off">
-                        <label for="artist" class="text-light">Prénom:</label>
-                        <input type="text" id="artist" name="prenom" value="" class="form-control" autocomplete="off">
-                        <label for="artist" class="text-light">Date de naissance:</label>
-                        <input type="date" id="artist" name="dateDeNaissance" value="" class="form-control" autocomplete="off">
-                        <label for="artist" class="text-light">Biographie:</label>
-                        <textarea type="" id="artist" name="biographie" value="" class="form-control" autocomplete="off"></textarea>
-                        <label for="artist" class="text-light">Photo:</label>
-                        <input type="file" id="artist" name="photo" class="form-control-file" autocomplete="off">
-
-                    </div>
-                    <input type="submit" class="btn btn-success" name="form_submit">
-                </form>
-            </div>
-        </div>
-    </div>
-
+	<div class="container center-div shadow mb-5">
+		<div class="heading text-center mb-5 text-uppercase text-white "></div>
+		<div class="container row d-flex flex-row justify-content-center mb-5">
+			<div class="admin-form shadow p-2">
+				<h2>{{film.titre}}</h2>
+				<form enctype="multipart/form-data" action="{{baseUrl}}/admin/roleUpdate" method="POST">
+                {{ dump(roles) }}
+					{% for i in 0..roles|length-1 %}
+						<p>{{ i }}</p>
+						<select class="custom-select custom-select-lg">
+                        {% for artist in artists %}
+							<option selected>{{artist.id}}</option>
+						{% endfor %}
+						</select>
+					
+                    {% endfor %}
+                    {#{% for j in 0 ..artists|length %}
+                    <p>{{ j }}</p>
+                    {% endfor %}#}
+					{#<div class="form-group">
+									                        <label for="role" class="text-light">Titre:</label>
+									                        <input type="text" id="artist" name="nom" value="" class="form-control" autocomplete="off">
+									                        <label for="artist" class="text-light">Date de sortie:</label>
+									                        <input type="date" id="artist" name="dateDeSortie" value="" class="form-control" autocomplete="off">
+									                        <label for="artist" class="text-light">Synopsis:</label>
+									                        <textarea type="" id="artist" name="synopsis" value="" class="form-control" autocomplete="off"></textarea>
+									                        <label for="artist" class="text-light">Photo:</label>
+									                        <input type="file" id="artist" name="photo" class="form-control-file" autocomplete="off">
+									
+									                    </div>
+									                    <input type="submit" class="btn btn-success" name="form_submit">#}
+				</form>
+			</div>
+		</div>
+	</div>
 {% endblock %}

@@ -45,16 +45,15 @@ class AdminController extends Controller
     {
         if (!isset($_SESSION['admin'])) {
             header("Location: $this->baseUrl/admin");
-
         }
     }
 
-     public function logout()
-     {
+    public function logout()
+    {
         $this->isConnected();
         session_destroy();
         header("Location: $this->baseUrl/admin");
-     }
+    }
 
     public function index()
     {
@@ -127,7 +126,7 @@ class AdminController extends Controller
         $template = $this->twig->load($pageActeurUpdate);
         echo $template->render(["acteur" => $acteur]);
     }
-    
+
     public function acteurDelete($id)
     {
         $this->isConnected();
@@ -139,61 +138,30 @@ class AdminController extends Controller
     public function acteurAdd()
     {
         $this->isConnected();
+        $error = "";
         $instanceArtist = new Artist();
         if (!empty($_POST)) {
-            $photoName = $_FILES['photo']['name'];
-            $photoName = $_FILES['photo']['name'];
-            $photoTmpName = $_FILES['photo']['tmp_name'];
-
-            $photoError = $_FILES['photo']['error'];
-            $photoSize = $_FILES['photo']['size'];
-
-            $photoExt = explode('.', $photoName); // Explose la chaine a chaque point
-            $photoActualExt = strtolower(end($photoExt)); // la derniere partir = extention
-
-            $allowed = array('jpg', 'jpeg', 'png');
-
-            if (in_array($photoActualExt, $allowed))
-            {
-                if ($photoError === 0) 
-                {
-                    if ($photoSize < 1000000) 
-                    {
-                        $photoNew = uniqid('true') .".". $photoActualExt;
-                        $photoDestination = "assets/img/acteurs/". $photoNew;
-
-                        move_uploaded_file($photoTmpName, $photoDestination);
-                        $instanceArtist->add($_POST["nom"],$_POST["prenom"], $_POST["dateDeNaissance"], $_POST["biographie"], $photoNew);
-                        header("Location: $this->baseUrl/admin/acteur");
-                    } else 
-                    {
-                        echo 'votre image est trop grand !';
-                    }
-                }else 
-                {
-                    echo 'ya une erreur de téléchargement';
-                }
-            } else 
-            {
-                echo " vous ne pouvez pas télécharger des fichiers de ce type ";
+            $photoNew = $this->uploadFiles('photo', 'acteurs');
+            if($instanceArtist->add($_POST["nom"], $_POST["prenom"], $_POST["dateDeNaissance"], $_POST["biographie"], $photoNew)){
+                header("Location: $this->baseUrl/admin/acteur");
+            } else {
+                $error = "Il y a eu un problème lors de l'ajout.";
             }
-
         }
         $pageActeurAdd = 'Admin/acteurAdd.html.twig';
         $template = $this->twig->load($pageActeurAdd);
-        echo $template->render();
-        
-    }
-    public function realisateur(){
-       echo "coucou";
-
+        echo $template->render(["error" => $error]);
     }
 
     public function role()
     {
+        $this->isConnected();
+        $instanceFilm = new Film();
+        $films = $instanceFilm->getAllFilm();
+        //$artist = $instanceArtist->getAllArtist();
         $pageRole = 'Admin/role.html.twig';
         $template = $this->twig->load($pageRole);
-        echo $template->render();
+        echo $template->render(["films" => $films]);
     }
     public function roleAdd()
     {
@@ -201,26 +169,39 @@ class AdminController extends Controller
         $template = $this->twig->load($pageRoleAdd);
         echo $template->render();
     }
-    public function roleUpdate()
+    public function roleUpdate($id)
     {
+        //var_dump($id);
+        $instanceArtist = new Artist();
+        $roles = $instanceArtist->getActorsFromOneFilm($id);
+        $artists = $instanceArtist->getAllArtist();
+        $instanceFilm = new Film();
+        $film = $instanceFilm->getOneFilm($id);
         $pageRoleUpdate = 'Admin/roleUpdate.html.twig';
         $template = $this->twig->load($pageRoleUpdate);
-        echo $template->render();
+        echo $template->render(["roles" => $roles, "film" => $film, 'artists'=> $artists]);
     }
+
+    private function uploadFiles($name, $destination)
+    {
+        $photoName = $_FILES[$name]['name'];
+        $photoTmpName = $_FILES[$name]['tmp_name'];
+        $photoError = $_FILES[$name]['error'];
+        $photoSeize = $_FILES[$name]['size'];
+
+        $photoExt = explode('.', $photoName); // Explose la chaine a chaque point
+        $photoActualExt = strtolower(end($photoExt)); // la derniere partir = extention
+
+        $allowed = array('jpg', 'jpeg', 'png');
+
+        if (in_array($photoActualExt, $allowed) && ($photoError == 0) && ($photoSeize < 1000000)) {
+            $photoNew = uniqid('',true) . "." . $photoActualExt;
+            $photoDestination = "assets/img/" . $destination . "/" . $photoNew;
+            move_uploaded_file($photoTmpName, $photoDestination);
+            return $photoNew;
+        } else {
+            return NULL;
+        }
+    }
+
 }
-        
-
-  
-
-
-    
-
-
-
-
-            
-
-
-
-
-
