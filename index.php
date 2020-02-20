@@ -6,15 +6,15 @@ require_once 'vendor/autoload.php';
 $router = new Router($_GET['url']);
 
 //liste de nos routes
-$router->get('/acteur/:id', "Artist.showActeur");
-$router->get('/acteur', "Artist.listActeur");
-$router->get('/film/:id', "Film.show");
+$router->get('/acteur/:id', 'Artist.showActeur');
+$router->get('/acteur', 'Artist.listActeur');
+$router->get('/film/:id', 'Film.show');
 $router->get('/realisateur/:id',"Artist.showReal");
-$router->get('/realisateur', "Artist.listRealisateur");
+$router->get('/realisateur', 'Artist.listRealisateur');
 $router->get('/', 'Home.index');
 
 
-$router->post('/admin/log', "Admin.checklogin");
+$router->post('/admin/log', 'Admin.checklogin');
 $router->get('admin/logout', 'Admin.logout');
 $router->get('/admin/index', 'Admin.index');
 $router->get('/admin', "Admin.login");
@@ -36,7 +36,7 @@ $router->post('/admin/roleUpdate', 'Admin.roleUpdate');
 $router->get('/admin/roleUpdate', 'Admin.roleUpdate');
 $router->get('/admin/film','Admin.film');
 
-$router->get('/admin/realisateur', 'Admin.realisateur');
+
 
 $router->get('/', 'Home.index');
 
