@@ -236,4 +236,38 @@ class AdminController extends Controller
         $template = $this->twig->load($pageRealisateur);
         echo $template->render(["session" => $_SESSION]);
     }
+
+    //Méthodes pour <Role95 class="">
+    <div class="">
+    
+    
+    </div></Role95>
+    public function role()
+    {
+        $this->isConnected();
+        $instanceFilm = new Film();
+        $films = $instanceFilm->getAllFilm();
+        //$artist = $instanceArtist->getAllArtist();
+        $pageRole = 'Admin/role.html.twig';
+        $template = $this->twig->load($pageRole);
+        echo $template->render(["films" => $films]);
+    }
+    public function roleAdd()
+    {
+        $pageRoleAdd = 'Admin/roleAdd.html.twig';
+        $template = $this->twig->load($pageRoleAdd);
+        echo $template->render();
+    }
+    public function roleUpdate($id)
+    {
+        //var_dump($id);
+        $instanceArtist = new Artist();
+        $roles = $instanceArtist->getActorsFromOneFilm($id);
+        $artists = $instanceArtist->getAllArtist();
+        $instanceFilm = new Film();
+        $film = $instanceFilm->getOneFilm($id);
+        $pageRoleUpdate = 'Admin/roleUpdate.html.twig';
+        $template = $this->twig->load($pageRoleUpdate);
+        echo $template->render(["roles" => $roles, "film" => $film, 'artists'=> $artists]);
+    }
 }
