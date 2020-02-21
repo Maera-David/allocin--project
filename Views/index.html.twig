@@ -3,13 +3,14 @@
 {% block body %}
    
     <div class="container">
-		<h1> Les coups de coeur de la semaine!</h1>
-        <div class="row">
+		
+        <div class="row mb-4 pb-4">
             {% for film in films|slice(0, 3) %}
                 <div class="col-4 text-center">
-                    <a href="{{baseUrl}}/film/{{film.id}}"><img src="{{baseUrl}}/assets/img/film/{{film.affiche}}"></a>
-                </div>
+                    <a href="{{baseUrl}}/film/{{film.id}}"><img src="{{baseUrl}}/assets/img/film/{{film.affiche}}"></a>            
+                </div>  
             {% endfor %}
+             <h1> Les coups de coeur de la semaine!</h1> 
         </div>	
 	</div>	
 {% endblock %}
