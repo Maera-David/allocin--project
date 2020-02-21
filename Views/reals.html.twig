@@ -1,20 +1,37 @@
 {% extends "template.html.twig" %}
 
 {% block body %}
-<div class="container">
-        <div class="row">
-            {% for real in reals|slice(0, 3) %}
-                <div class="col-4 text-center rounded-circle">
-                    <a href="{{baseUrl}}/realisateur/{{real.id}}"><img src="{{baseUrl}}/assets/img/reals/{{real.photo}}"></a>
-                </div>
-            {% endfor %}
-        </div>
-        <div class="row">
+	<div class="container">
+		<div class="row mb-4 pb-4">
+			{% for real in reals|slice(0, 3) %}
+				<div class="col-4 text-center rounded-circle">
+					<div class="card bg-dark">
+						<img src="{{baseUrl}}/assets/img/reals/{{real.photo}}" class="float-right img-thumbnail">
+						<div class="card-img-overlay hoverdiv text-center p-0">
+							<a class="card-title text-white text-decoration-none font-weight-bold h-100 w-100 m-0" href="{{baseUrl}}/realisateur/{{real.id}}">
+								<span class="name-reals">{{ real.prenom }}
+									{{ real.nom }}</span>
+							</a>
+						</div>
+					</div>
+
+				</div>
+			{% endfor %}
+		</div>
+		<div class="row mb-4 pb-4">
 			{% for real in reals|slice(3, 3) %}
 				<div class="col-4 text-center">
-					<a href="{{baseUrl}}/realisateur/{{real.id}}"><img src="{{baseUrl}}/assets/img/reals/{{real.photo}}"></a>
+					<div class="card bg-dark">
+						<img src="{{baseUrl}}/assets/img/reals/{{real.photo}}" class="float-right img-thumbnail">
+						<div class="card-img-overlay hoverdiv text-center p-0">
+							<a class="card-title text-white text-decoration-none font-weight-bold h-100 w-100 m-0" href="{{baseUrl}}/realisateur/{{real.id}}">
+								<span class="name-reals">{{ real.prenom }}
+									{{ real.nom }}</span>
+							</a>
+						</div>
+					</div>
 				</div>
-               {% endfor %} 
-        </div>
-</div>
+			{% endfor %}
+		</div>
+	</div>
 {% endblock %}

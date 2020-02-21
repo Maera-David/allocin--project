@@ -129,7 +129,7 @@ class AdminController extends Controller
     {
         $this->isConnected();
         $film = new Film();
-        $films = $film->getAllFilm();
+        $films = $film->getAllFilmAdmin();
         $pageFilm = 'Admin/film.html.twig';
         $template = $this->twig->load($pageFilm);
         echo $template->render(["session" => $_SESSION, 'films' => $films]);
@@ -237,7 +237,7 @@ class AdminController extends Controller
         echo $template->render(["session" => $_SESSION]);
     }
 
-    //Méthodes pour <Role95 class="">
+   /* //Méthodes pour <Role95 class="">
     <div class="">
     
     
@@ -269,5 +269,5 @@ class AdminController extends Controller
         $pageRoleUpdate = 'Admin/roleUpdate.html.twig';
         $template = $this->twig->load($pageRoleUpdate);
         echo $template->render(["roles" => $roles, "film" => $film, 'artists'=> $artists]);
-    }
+    }*/
 }

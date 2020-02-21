@@ -12,6 +12,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css">
     {#<link href="https://stackpath.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-MI32KR77SgI9QAPUs+6R7leEOwtop70UsjEtFEezfKnMjXWx15NENsZpfDgq8m8S" crossorigin="anonymous">#}
     <link rel= "stylesheet" href="{{baseUrl}}/assets/css/style.css">
+	<link rel="shortcut icon" type="image/x-icon" href="./assets/img/lilicon.ico">
     {% block stylesheets %}
     
     {# Here you can add only the CSS that you need #}
@@ -20,8 +21,17 @@
 
 <body>
     {% block header %}
+
+<div class="content-header">
+
+	<div class="top-header">
+
+		<div class="container-header"></div>
+	</div>
+</div>
+
+
     <nav class="navbar navbar-expand-lg navbar-dark">
-		<a class="navbar-brand" href="#">PachiMovies</a>
 		<ul class="navbar-nav mr-auto">
 			<li class="nav-item">
 				<a class="nav-link text-white" href="{{baseUrl}}">Accueil</a>
@@ -33,7 +43,7 @@
 				<a class="nav-link" href="{{baseUrl}}/acteur">Acteurs</a>
 			</li>
 			<li class="nav-item">
-				<a class="nav-link" href="{{baseUrl}}">Films</a>
+				<a class="nav-link" href="{{baseUrl}}/film">Films</a>
 			</li>
 			</ul>
 			<div>
@@ -64,7 +74,7 @@
 
     {% block footer %}
     <footer
-		class="page-footer">
+		class="page-footer fixed-bottom">
 
 		<!-- Copyright -->
 		<div class="footer-copyright text-center py-3">© 2020 Copyright : Maëra - Irina - Béatrice - Isabelle
