@@ -14,8 +14,8 @@
 			<div class="bloc1">Sorti en
 				<span>{{film.sortie|date("d/m/Y")}}</span>
 				et réalisé par
-				<span>{{ film.nomReal }}</span>. C'est un film
-				<span>{{ film.genre }}</span>
+				<span>{{film.nomReal}}</span>. C'est un film
+				<span>{{film.genre}}</span>
 				qui dure environs
 				<span>durée</span>. <br>	
 				On y retrouve les acteurs :
@@ -28,7 +28,8 @@
 
 			<div class="bloc2">
 				<p>
-					{{ film.synopsis|nl2br }} 
+					synopsis : 
+					Lorem ipsum
 				</p>
 			</div>
 
@@ -40,4 +41,8 @@
 	</div>
 
 {% endblock %}
+
+
+
+
 
