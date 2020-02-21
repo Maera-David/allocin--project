@@ -8,21 +8,22 @@
 		<div class="container row d-flex flex-row justify-content-center mb-5">
 			<div class="admin-form shadow p-2">
 				<h2>{{film.titre}}</h2>
-				<form
-					enctype="multipart/form-data" action="{{baseUrl}}/admin/roleUpdate" method="POST">
+				<form action="{{baseUrl}}/admin/roleUpdate/{{film.id}}" method="POST">
 					{# {% for i in 0..roles|length-1 %} #}
 					{% for role in roles %}
-                    
-						<select class="custom-select custom-select-lg">
+                    <div class="input-group mb-3">
+                    <label class = "artistAdmin">Artist :</label>
+						<select class="custom-select custom-select-lg" name="artist-role[]">
 							{% for artist in artists %}
-								<option id="artist-role" name="artist-role" value="{{ artist.id }}" class="form-control" {% if role.id == artist.id %} selected {% endif %}>{{ artist.nom }}
+
+								<option id="artist-role" value="{{ artist.id }}" class="form-control" {% if role.id == artist.id %} selected {% endif %}>{{ artist.nom }}
 									{{ artist.prenom }}</option>
 								{# {{dump(role.id)}} #}
 							{% endfor %}
 						</select>
-						
-							<input type="text" value="{{ role.role }}">
-						
+						<label class = "artistAdmin" >Role :</label>
+							<input type="text" name="role[]" value="{{ role.role }}">
+						</div>
 					{% endfor %}
 
 
@@ -36,8 +37,8 @@
 											<label for="artist" class="text-light">Photo:</label>
 											<input type="file" id="artist" name="photo" class="form-control-file" autocomplete="off">
 					
-										</div>
-										<input type="submit" class="btn btn-success" name="form_submit">#}
+										</div>#}
+										<input type="submit" class="btn btn-success" name="form_submit">
 				</form>
 			</div>
 		</div>

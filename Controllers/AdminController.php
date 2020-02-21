@@ -171,7 +171,17 @@ class AdminController extends Controller
     }
     public function roleUpdate($id)
     {
-        //var_dump($id);
+        $this->isConnected();
+        if(!empty($_POST)){
+            var_dump($_POST);
+            $instanceRole = new Role();
+            $instanceRole->deleteRoles($id);
+            for($i = 0; $i < count($_POST['role']); $i++){
+                $instanceRole->addRoles($id, $_POST['artist-role'][$i], $_POST['role'][$i] );
+                //var_dump($_POST['role'][$i]);
+            }
+            header("Location: $this->baseUrl/admin/role");
+        }
         $instanceArtist = new Artist();
         $roles = $instanceArtist->getActorsFromOneFilm($id);
         $artists = $instanceArtist->getAllArtist();
@@ -202,6 +212,8 @@ class AdminController extends Controller
         } else {
             return NULL;
         }
+
+        
     }
 
 }
