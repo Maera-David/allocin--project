@@ -7,15 +7,6 @@ class Film extends Model
         $this->pdo = parent::getPdo();
     }
 
-    public function getAllfilm()
-    {
-        $sql = 'SELECT * FROM film ORDER BY id';
-        $req = $this->pdo->prepare($sql);
-        $req->execute();
-        $films = $req->fetchAll();
-        return $films; 
-    }
-
     public function getLast3Films()
     {
         $sql = 'SELECT * FROM film ORDER BY id DESC LIMIT 3';
@@ -50,6 +41,15 @@ class Film extends Model
         $req->execute([$id]);
         $films = $req->fetchAll();
         return $films;
+    }
+
+    public function getAllfilm()
+    {
+        $sql = 'SELECT * FROM film ORDER BY id';
+        $req = $this->pdo->prepare($sql);
+        $req->execute();
+        $films = $req->fetchAll();
+        return $films; 
     }
 
     //Partie Admin

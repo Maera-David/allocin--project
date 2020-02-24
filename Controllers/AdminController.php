@@ -217,41 +217,23 @@ class AdminController extends Controller
     public function acteurAdd()
     {
         $this->isConnected();
+        $error = "";
         $instanceArtist = new Artist();
         if (!empty($_POST)) {
             $photoNew = $this->uploadFiles('photo', 'acteurs');
-            $instanceArtist->add($_POST["nom"], $_POST["prenom"], $_POST["dateDeNaissance"], $_POST["biographie"], $photoNew);
-            header("Location: $this->baseUrl/admin/acteur");
+            if ($instanceArtist->add($_POST["nom"], $_POST["prenom"], $_POST["dateDeNaissance"], $_POST["biographie"], $photoNew)) {
+                header("Location: $this->baseUrl/admin/acteur");
+            } else {
+                $error = "Il y a eu un problème lors de l'ajout.";
+            }
         }
         $pageActeurAdd = 'Admin/acteurAdd.html.twig';
         $template = $this->twig->load($pageActeurAdd);
-        echo $template->render();
+        echo $template->render(["error" => $error]);
     }
 
-    //Méthodes pour Réalisateurs
-    public function realisateur()
-    {
-        $this->isConnected();
-        $pageRealisateur = 'Admin/realisateur.html.twig';
-        $template = $this->twig->load($pageRealisateur);
-        echo $template->render(["session" => $_SESSION]);
-    }
 
-   /* //Méthodes pour <Role95 class="">
-    <div class="">
-    
-    
-    </div></Role95>
-    public function role()
-    {
-        $this->isConnected();
-        $instanceFilm = new Film();
-        $films = $instanceFilm->getAllFilm();
-        //$artist = $instanceArtist->getAllArtist();
-        $pageRole = 'Admin/role.html.twig';
-        $template = $this->twig->load($pageRole);
-        echo $template->render(["films" => $films]);
-    }
+    //Méthodes pour Role
     public function roleAdd()
     {
         $pageRoleAdd = 'Admin/roleAdd.html.twig';
@@ -260,7 +242,17 @@ class AdminController extends Controller
     }
     public function roleUpdate($id)
     {
-        //var_dump($id);
+        $this->isConnected();
+        if (!empty($_POST)) {
+            var_dump($_POST);
+            $instanceRole = new Role();
+            $instanceRole->deleteRoles($id);
+            for ($i = 0; $i < count($_POST['role']); $i++) {
+                $instanceRole->addRoles($id, $_POST['artist-role'][$i], $_POST['role'][$i]);
+                //var_dump($_POST['role'][$i]);
+            }
+            header("Location: $this->baseUrl/admin/role");
+        }
         $instanceArtist = new Artist();
         $roles = $instanceArtist->getActorsFromOneFilm($id);
         $artists = $instanceArtist->getAllArtist();
@@ -268,6 +260,6 @@ class AdminController extends Controller
         $film = $instanceFilm->getOneFilm($id);
         $pageRoleUpdate = 'Admin/roleUpdate.html.twig';
         $template = $this->twig->load($pageRoleUpdate);
-        echo $template->render(["roles" => $roles, "film" => $film, 'artists'=> $artists]);
-    }*/
+        echo $template->render(["roles" => $roles, "film" => $film, 'artists' => $artists]);
+    }
 }

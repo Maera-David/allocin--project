@@ -1,4 +1,3 @@
-
 * {
     margin: 0;
     padding: 0;
@@ -42,4 +41,9 @@ p
     font-size: 1.4rem;
     background: -webkit-linear-gradient(left, #0072ff, #8811c5);
     font-family: 'Staatliches', cursive;  
+}
+.artistAdmin
+{
+    color:white;
+    padding : 10px;
 }

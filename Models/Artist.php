@@ -48,6 +48,7 @@ class Artist extends Model
         return $req->fetch();
     }
 
+    // Partie Admin
     public function delete($id)
     {
         $sql = 'DELETE FROM artiste WHERE id = ?';
@@ -61,7 +62,7 @@ class Artist extends Model
         $req = $this->pdo->prepare($sql);
         $req->execute([$nom, $prenom, $dateDeNaissance, $biographie, $photo]);
     }
-    
+
     public function update($id, $newValue)
     {
         $sql = 'UPDATE artiste SET nom = ? WHERE id = ?';
@@ -69,14 +70,11 @@ class Artist extends Model
         $req->execute([$newValue, $id]);
     }
 
-// Partie Admin
     public function getAllArtist()
     {
         $sql = 'SELECT * FROM artiste';
         $req = $this->pdo->prepare($sql);
         $req->execute();
-        $artist = $req->fetchAll();
-        return $artist;
+        return $req->fetchAll();
     }
-
 }
