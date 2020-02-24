@@ -244,14 +244,15 @@ clear: both;
 }
 
 .astree-cadre a {
-  color: #968070;
+  /* color: #968070; */
+  color: #ababab;
   text-decoration: none;
   --webkit-transition: all 0.1s ease;
   transition: all 0.1s ease;
 }
 
 .astree-cadre a:hover {
-  color: #5b2f32;
+  color: #968070;
   --webkit-transition: alla 0.1s ease;
   transition: all 0.1s ease;
 }
