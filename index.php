@@ -15,7 +15,8 @@ $router->get('/realisateur/:id',"Artist.showReal");
 $router->get('/realisateur', "Artist.listRealisateur");
 
 //Les routes pour Admin
-$router->post('/admin/log', "Admin.checklogin");
+$router->post('/admin/log', 'Admin.checklogin');
+$router->get('admin/logout', 'Admin.logout');
 $router->get('/admin/index', 'Admin.index');
 $router->get('/admin', "Admin.login");
 

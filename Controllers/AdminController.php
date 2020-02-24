@@ -47,6 +47,13 @@ class AdminController extends Controller
         }
     }
 
+    public function logout()
+    {
+        $this->isConnected();
+        session_destroy();
+        header("Location: $this->baseUrl/admin");
+    }
+
     public function index()
     {
         $this->isConnected();
@@ -234,6 +241,16 @@ class AdminController extends Controller
 
 
     //Méthodes pour Role
+    public function role()
+    {
+        $this->isConnected();
+        $instanceFilm = new Film();
+        $films = $instanceFilm->getAllFilm();
+        //$artist = $instanceArtist->getAllArtist();
+        $pageRole = 'Admin/role.html.twig';
+        $template = $this->twig->load($pageRole);
+        echo $template->render(["films" => $films]);
+    }
     public function roleAdd()
     {
         $pageRoleAdd = 'Admin/roleAdd.html.twig';
