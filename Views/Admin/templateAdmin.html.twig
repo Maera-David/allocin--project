@@ -1,0 +1,50 @@
+
+{% extends "template.html.twig" %}
+{% block stylesheets %}
+	<link rel="stylesheet" href="{{baseUrl}}/assets/css/AdminStyle.css">
+{% endblock %}
+
+{% block header %}
+
+	<nav class="navbar navbar-expand-lg navbar-dark">
+		<a class="navbar-brand" href="#">PachiMovies</a>
+		<ul class="navbar-nav mr-auto">
+			<li class="nav-item">
+				<a class="nav-link text-white" href="{{baseUrl}}">Accueil</a>
+			</li>
+			<li class="nav-item">
+				<a class="nav-link text-white" href="{{baseUrl}}/admin/index">Admin</a>
+			</li>
+
+			<li class="nav-item">
+				<a class="nav-link" href="{{baseUrl}}/admin/acteur">Acteur</a>
+			</li>
+			<li class="nav-item">
+				<a class="nav-link" href="{{baseUrl}}/admin/film">Film</a>
+			</li>
+			<li class="nav-item">
+				<a class="nav-link" href="{{baseUrl}}/admin/genre">Genre</a>
+			</li>
+			<li class="nav-item">
+				<a class="nav-link" href="{{baseUrl}}/admin/role">Rôle</a>
+			</li>
+		</ul>
+		<div>
+			<a class="nav-link dropdown-toggle text-white" id="navbarDropdownMenuLink-4" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+				<i class="fa fa-user"></i>
+				Admin
+			</a>
+			<div class="dropdown-menu dropdown-menu-right dropdown-info" aria-labelledby="navbarDropdownMenuLink-4">
+				<a class="dropdown-item" href="{{baseUrl}}/admin/index/">My account</a>
+				<a class="dropdown-item" href="{{baseUrl}}/admin/logout/">Log out</a>
+			</div>
+		</div>
+	</nav>
+
+{% endblock %}
+
+{% block javascript %}
+	<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+	<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+{% endblock %}

@@ -1,3 +1,4 @@
+
 <?php
 
 class ArtistController extends Controller

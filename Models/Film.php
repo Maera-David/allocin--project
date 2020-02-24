@@ -51,4 +51,47 @@ class Film extends Model
         $films = $req->fetchAll();
         return $films; 
     }
+
+    //Partie Admin
+
+    public function getAllFilmAdmin()
+    {
+        $sql = 'SELECT * FROM film';
+        $req = $this->pdo->prepare($sql);
+        $req->execute();
+        $film = $req->fetchAll();
+        return $film;
+    }
+
+    public function getOneFilmAdmin($id)
+    {
+        $sql = 'SELECT * FROM film WHERE film.id = ?';
+        $req = $this->pdo->prepare($sql);
+        $req->execute([$id]);
+        $film = $req->fetch();
+        return $film;
+    }
+    
+    public function updateFilm($id, $titre, $sortie, $synopsis, $genre, $artiste)
+    {
+        $sql = 'UPDATE film SET titre = ?, sortie = ?, synopsis = ?, genre_id = ?, artiste_id = ? WHERE film.id = ?';
+        $req = $this->pdo->prepare($sql);
+        $req->execute([$titre, $sortie, $synopsis, $genre, $artiste, $id]);
+    }
+
+    public function delete($id)
+    {
+        $sql = 'DELETE FROM film WHERE id = ?';
+        $req = $this->pdo->prepare($sql);
+        $req->execute([$id]);
+    }
+
+    public function add($titre, $sortie, $synopsis, $genre, $artiste, $affiche)
+    {
+        $sql = 'INSERT INTO film (titre, sortie, synopsis, genre_id, artiste_id, affiche) VALUES(?, ?, ?, ?, ?, ?)';
+        $req = $this->pdo->prepare($sql);
+        $req->execute([$titre, $sortie, $synopsis, $genre, $artiste, $affiche]);
+    }
+
 }
+    

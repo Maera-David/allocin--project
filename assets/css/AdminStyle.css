@@ -1,0 +1,49 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+nav ul li a 
+{
+    color:#9e03ce;
+    font-size: 1.4rem;
+    list-style-type: none;
+    padding:0;
+}
+.titre
+ {
+    position:absolute;
+    color:white;
+    top:15%;
+    left:43%;
+    font-family: 'Staatliches', cursive;
+    font-size: 1.4rem;
+}
+p
+{
+    
+    color:white;
+    font-size: 1.4rem;
+}
+   
+
+}
+
+.center-div {
+    position: absolute;
+    top: 50%;
+    left: 50%; 
+    transform: translate(-50%, -50%);
+}
+
+.heading {
+    width: 100%;
+    line-height: 80px;
+    font-size: 1.4rem;
+    background: -webkit-linear-gradient(left, #0072ff, #8811c5);
+    font-family: 'Staatliches', cursive;  
+}
+.artistAdmin
+{
+    color:white;
+    padding : 10px;
+}

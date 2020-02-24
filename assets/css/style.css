@@ -218,7 +218,6 @@ clear: both;
   left: 0;
   bottom: 0;
 }
-
 .presentation .img_footer_droite {
   position: absolute;
   right: 0;
@@ -342,3 +341,4 @@ background-color: rgba(0, 0, 0, 0.52);
   -ms-transform: translate(-50%, -50%);
   -o-transform: translate(-50%, -50%);
 }
+
