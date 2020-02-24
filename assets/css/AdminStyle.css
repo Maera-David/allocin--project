@@ -1,4 +1,7 @@
+@import url('https://fonts.googleapis.com/css?family=Staatliches&display=swap');
+
 * {
+    box-sizing: border-box;
     margin: 0;
     padding: 0;
 }
@@ -46,4 +49,12 @@ p
 {
     color:white;
     padding : 10px;
+}
+.admin-form{
+    background-color: rgba(0, 0, 0, 0.75);
+    
+}
+
+.mb-6 {
+    margin-bottom: 60px;
 }
