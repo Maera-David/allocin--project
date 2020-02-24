@@ -14,7 +14,7 @@
         {# <li><span>Rôles:</span> Machin dans tel truc</li> #}
         <li><span>Films: </span>
             {% for film in films %}
-				{{ film.titre }}	
+				<a href="{{baseUrl}}/film/{{film.id}}">{{ film.titre }}</a>
 			{% endfor %} </li>
         </ul>
 
