@@ -109,7 +109,7 @@ class AdminController extends Controller
         $template = $this->twig->load($pageGenre);
         echo $template->render(["genre" => $genre]);
     }
-
+    
     public function genreDelete($id)
     {
         $this->isConnected();
@@ -253,10 +253,12 @@ class AdminController extends Controller
     }
     public function roleAdd()
     {
+        $this->isConnected();
         $pageRoleAdd = 'Admin/roleAdd.html.twig';
         $template = $this->twig->load($pageRoleAdd);
         echo $template->render();
     }
+    
     public function roleUpdate($id)
     {
         $this->isConnected();
@@ -277,6 +279,6 @@ class AdminController extends Controller
         $film = $instanceFilm->getOneFilm($id);
         $pageRoleUpdate = 'Admin/roleUpdate.html.twig';
         $template = $this->twig->load($pageRoleUpdate);
-        echo $template->render(["roles" => $roles, "film" => $film, 'artists' => $artists]);
+        echo $template->render(["roles" => $roles, "film" => $film, 'artists'=> $artists]);
     }
 }
