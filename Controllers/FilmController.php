@@ -1,3 +1,4 @@
+
 <?php
 
 class FilmController extends Controller
@@ -19,4 +20,12 @@ class FilmController extends Controller
         echo $template->render(['film' => $film, 'artists' => $actors]);
     }
 
+    public function listFilm() 
+    {
+        $instanceFilm = new Film();
+        $films = $instanceFilm->getAllFilm();
+        $pageTwig = 'films.html.twig';
+        $template = self::$_twig->load($pageTwig);
+        echo $template->render(['films' => $films]);
+    }
 }

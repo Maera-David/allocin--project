@@ -1,4 +1,7 @@
+@import url('https://fonts.googleapis.com/css?family=Staatliches&display=swap');
+
 * {
+    box-sizing: border-box;
     margin: 0;
     padding: 0;
 }
@@ -42,6 +45,16 @@ p
     background: -webkit-linear-gradient(left, #0072ff, #8811c5);
     font-family: 'Staatliches', cursive;  
 }
+.artistAdmin
+{
+    color:white;
+    padding : 10px;
+}
+.admin-form{
+    background-color: rgba(0, 0, 0, 0.75);
+    
+}
 
-
-
+.mb-6 {
+    margin-bottom: 60px;
+}

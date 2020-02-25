@@ -1,0 +1,16 @@
+  
+{% extends "template.html.twig" %}
+
+{% block body %}
+
+<div class="container mb-5">
+	<div class="row ">
+		{% for film in films %}
+			<div class="col-centered col-md-4 mb-3">
+				<a href="{{baseUrl}}/film/{{film.id}}">
+					<img src="{{baseUrl}}/assets/img/film/{{film.affiche}}">
+				</a>
+			</div>
+		{% endfor %}
+
+{% endblock %}

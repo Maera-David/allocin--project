@@ -1,0 +1,90 @@
+{% extends "Admin/templateAdmin.html.twig" %}
+{% block body %}
+<h1> Admin ajouter FILM</h1>
+
+    <div class="container center-div shadow mb-6">
+      <div class="heading text-center mb-5 text-uppercase text-white">
+      </div>
+        <div class="container row d-flex flex-row justify-content-center mb-5">
+          <div class="admin-form shadow p-2 mb-5">
+            <form action="{{baseUrl}}/admin/filmAdd" method="POST" enctype = "multipart/form-data">
+
+          <div class="form-group">
+            <label for="film-titre" class="text-light">
+              TITRE DE FILM:
+            </label>
+            <input type="text"
+              id="film-titre"
+              name="film-titre"
+              value="{{ film.titre }}"
+              class="form-control"
+              autocomplete="off">
+          </div>
+
+          <div class="form-group">
+            <label for="film-date" class="text-light">
+              DATE DE SORTIE:
+            </label>
+            <input type="date"
+              id="film-date"
+              name="film-date"
+              value="{{ film.sortie }}"
+              class="form-control"
+              autocomplete="off">
+          </div>
+
+          <div class="form-group">
+            <label for="film-synopsis" class="text-light">
+                SYNOPSIS:
+            </label> 
+            <textarea id="film-synopsis" name="film-synopsis" class="form-control" autocomplete="off">
+            </textarea>
+          </div>
+
+          <div class="form-group">
+            <label for="film-genre" class="text-light">
+                GENRE:
+            </label> 
+            <select name = "film-genre"  size="1" >
+            
+              {% for genre in genres %} 
+              <option id="film-genre" name="film-genre" value="{{ genre.id }}" class="form-control" {% if film.genre_id == genre.id %}selected{% endif %} >
+              {{ genre.nom }}
+              </option>
+               {% endfor %}
+              </select>
+          </div>
+
+          <div class="form-group">
+            <label for="film-artiste" class="text-light">*
+                REALISATEUR:
+            </label> 
+            <select name = "film-artiste"  size="1" >
+            
+              {% for artiste in artistes %} 
+              <option id="film-artiste" name="film-artiste" value="{{ artiste.id }}" class="form-control" {% if film.artiste_id == artiste.id %}selected{% endif %} >
+              {{ artiste.prenom }} {{ artiste.nom }}
+              </option>
+               {% endfor %}
+              </select>
+          </div>
+
+          <div class="form-group">
+            <label for="film-affiche" class="text-light">
+              AFFICHE:
+            </label>
+            <input type="file"
+              id="film-affiche"
+              name="film-affiche"
+              value="{{ film.affiche }}"
+              class="form-control"
+              autocomplete="off">
+          </div>
+          
+            <input type="submit" class="btn btn-success" name="form_submit">
+            </form>
+          </div>
+        </div>
+    </div>
+
+{% endblock %}

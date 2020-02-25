@@ -1,3 +1,4 @@
+
 <?php
 
 class Artist extends Model
@@ -47,6 +48,7 @@ class Artist extends Model
         return $req->fetch();
     }
 
+    // Partie Admin
     public function delete($id)
     {
         $sql = 'DELETE FROM artiste WHERE id = ?';

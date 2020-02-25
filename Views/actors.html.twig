@@ -1,21 +1,23 @@
+
 {% extends "template.html.twig" %}
 
 {% block body %}
-<div class="container">
+<div class="container mb-5">
         <div class="row">
-            {% for actor in actors|slice(0, 8) %}
-                <div class="col-4 text-center rounded-circle">
-                    <a href="{{baseUrl}}/acteur/{{actor.id}}"><img src="{{baseUrl}}/assets/img/acteurs/{{actor.photo}}"></a>
+            {% for actor in actors %}
+                <div class="col-centered col-sm-4 mb-5">
+                    <div class="card bg-dark">
+                        <img src="{{baseUrl}}/assets/img/acteurs/{{actor.photo}}" class="float-sm-left img-thumbnail card-img" alt="">
+                        <div class="card-img-overlay hoverdiv text-center p-0">
+                            <a class="card-title text-white text-decoration-none font-weight-bold h-100 w-100 m-0" href="{{baseUrl}}/acteur/{{actor.id}}">
+                                 <span class="name-actors">{{ actor.prenom }} {{ actor.nom }}</span>
+                            </a>
+                        </div>
+                    </div>
                 </div>
             {% endfor %}
         </div>
-        <div class="row">
-			{% for actor in actors|slice(8, 18) %}
-				<div class="col-4 text-center">
-					<a href="{{baseUrl}}/acteur/{{actor.id}}"><img src="{{baseUrl}}/assets/img/acteurs/{{actor.photo}}"></a>
-				</div>
-               {% endfor %} 
-        </div>
+        
         
 </div>
 {% endblock %}

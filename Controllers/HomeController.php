@@ -1,3 +1,4 @@
+  
 <?php
 
 class HomeController extends Controller
@@ -10,7 +11,7 @@ class HomeController extends Controller
     public function index()
     {
         $film = new Film();
-        $films = $film->getLast6Films();
+        $films = $film->getLast3Films();
         $pageTwig = 'index.html.twig';
         $template = $this->twig->load($pageTwig);
         echo $template->render(['films' => $films]);

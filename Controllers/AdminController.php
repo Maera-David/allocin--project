@@ -1,4 +1,3 @@
-
 <?php
 class AdminController extends Controller
 {
@@ -63,6 +62,30 @@ class AdminController extends Controller
         echo $template->render(["session" => $_SESSION]);
     }
 
+    //Fonction pour upload files 
+    private function uploadFiles($name, $destination)
+    {
+        $photoName = $_FILES[$name]['name'];
+        $photoTmpName = $_FILES[$name]['tmp_name'];
+        $photoError = $_FILES[$name]['error'];
+        $photoSeize = $_FILES[$name]['size'];
+
+        $photoExt = explode('.', $photoName); // Explode la chaine a chaque point
+        $photoActualExt = strtolower(end($photoExt)); // la derniere partie = extention
+
+        $allowed = array('jpg', 'jpeg', 'png');
+
+        if (in_array($photoActualExt, $allowed) && ($photoError == 0) && ($photoSeize < 1000000)) {
+            $photoNew = uniqid('', true) . "." . $photoActualExt;
+            $photoDestination = "assets/img/" . $destination . "/" . $photoNew;
+            move_uploaded_file($photoTmpName, $photoDestination);
+            return $photoNew;
+        } else {
+            return NULL;
+        }
+    }
+
+    //Méthodes pour Genre 
     public function genre()
     {
         $this->isConnected();
@@ -86,6 +109,7 @@ class AdminController extends Controller
         $template = $this->twig->load($pageGenre);
         echo $template->render(["genre" => $genre]);
     }
+    
     public function genreDelete($id)
     {
         $this->isConnected();
@@ -107,6 +131,68 @@ class AdminController extends Controller
         echo $template->render();
     }
 
+    //Méthodes pour Films
+    public function film()
+    {
+        $this->isConnected();
+        $film = new Film();
+        $films = $film->getAllFilmAdmin();
+        $pageFilm = 'Admin/film.html.twig';
+        $template = $this->twig->load($pageFilm);
+        echo $template->render(["session" => $_SESSION, 'films' => $films]);
+    }
+
+    public function filmUpdate($id)
+    {
+        $this->isConnected();
+        $instanceFilm = new Film();
+        if (!empty($_POST)) {
+            $instanceFilm->updateFilm($id, $_POST["film-titre"], $_POST["film-date"], $_POST["film-synopsis"], $_POST["film-genre"], $_POST["film-artiste"]);
+            header("Location: $this->baseUrl/admin/film");
+        }
+        $film = $instanceFilm->getOneFilmAdmin($id);
+        $instanceGenre = new Genre();
+        $genres = $instanceGenre->getAllGenre();
+
+        $instanceArtist = new Artist();
+        $artists = $instanceArtist->getAllArtist();
+
+        $pageFilm = 'Admin/filmUpdate.html.twig';
+        $template = $this->twig->load($pageFilm);
+        echo $template->render(["film" => $film, "genres" => $genres, "artistes" => $artists]);
+    }
+
+    public function filmDelete($id)
+    {
+        $this->isConnected();
+        $instanceFilm = new Film();
+        $instanceFilm->delete($id);
+        header("Location: $this->baseUrl/admin/film");
+    }
+
+    public function filmAdd()
+    {
+        $this->isConnected();
+        $instanceFilm = new Film();
+
+        if (!empty($_POST)) {
+            $fileNameNew = $this->uploadFiles('film-affiche', 'film');
+            $instanceFilm->add($_POST["film-titre"], $_POST["film-date"], $_POST["film-synopsis"], $_POST["film-genre"], $_POST["film-artiste"], $fileNameNew);
+            header("Location: $this->baseUrl/admin/film?uploadsuccrss");
+        }
+
+        $instanceGenre = new Genre();
+        $genres = $instanceGenre->getAllGenre();
+
+        $instanceArtist = new Artist();
+        $artists = $instanceArtist->getAllArtist();
+
+        $pageFilmAdd = 'Admin/filmAdd.html.twig';
+        $template = $this->twig->load($pageFilmAdd);
+        echo $template->render(["genres" => $genres, "artistes" => $artists]);
+    }
+
+    //Méthodes pour acteurs
     public function acteur()
     {
         $this->isConnected();
@@ -142,7 +228,7 @@ class AdminController extends Controller
         $instanceArtist = new Artist();
         if (!empty($_POST)) {
             $photoNew = $this->uploadFiles('photo', 'acteurs');
-            if($instanceArtist->add($_POST["nom"], $_POST["prenom"], $_POST["dateDeNaissance"], $_POST["biographie"], $photoNew)){
+            if ($instanceArtist->add($_POST["nom"], $_POST["prenom"], $_POST["dateDeNaissance"], $_POST["biographie"], $photoNew)) {
                 header("Location: $this->baseUrl/admin/acteur");
             } else {
                 $error = "Il y a eu un problème lors de l'ajout.";
@@ -153,6 +239,8 @@ class AdminController extends Controller
         echo $template->render(["error" => $error]);
     }
 
+
+    //Méthodes pour Role
     public function role()
     {
         $this->isConnected();
@@ -165,13 +253,25 @@ class AdminController extends Controller
     }
     public function roleAdd()
     {
+        $this->isConnected();
         $pageRoleAdd = 'Admin/roleAdd.html.twig';
         $template = $this->twig->load($pageRoleAdd);
         echo $template->render();
     }
+    
     public function roleUpdate($id)
     {
-        //var_dump($id);
+        $this->isConnected();
+        if (!empty($_POST)) {
+            var_dump($_POST);
+            $instanceRole = new Role();
+            $instanceRole->deleteRoles($id);
+            for ($i = 0; $i < count($_POST['role']); $i++) {
+                $instanceRole->addRoles($id, $_POST['artist-role'][$i], $_POST['role'][$i]);
+                //var_dump($_POST['role'][$i]);
+            }
+            header("Location: $this->baseUrl/admin/role");
+        }
         $instanceArtist = new Artist();
         $roles = $instanceArtist->getActorsFromOneFilm($id);
         $artists = $instanceArtist->getAllArtist();
@@ -181,27 +281,4 @@ class AdminController extends Controller
         $template = $this->twig->load($pageRoleUpdate);
         echo $template->render(["roles" => $roles, "film" => $film, 'artists'=> $artists]);
     }
-
-    private function uploadFiles($name, $destination)
-    {
-        $photoName = $_FILES[$name]['name'];
-        $photoTmpName = $_FILES[$name]['tmp_name'];
-        $photoError = $_FILES[$name]['error'];
-        $photoSeize = $_FILES[$name]['size'];
-
-        $photoExt = explode('.', $photoName); // Explose la chaine a chaque point
-        $photoActualExt = strtolower(end($photoExt)); // la derniere partir = extention
-
-        $allowed = array('jpg', 'jpeg', 'png');
-
-        if (in_array($photoActualExt, $allowed) && ($photoError == 0) && ($photoSeize < 1000000)) {
-            $photoNew = uniqid('',true) . "." . $photoActualExt;
-            $photoDestination = "assets/img/" . $destination . "/" . $photoNew;
-            move_uploaded_file($photoTmpName, $photoDestination);
-            return $photoNew;
-        } else {
-            return NULL;
-        }
-    }
-
 }

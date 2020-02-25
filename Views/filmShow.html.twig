@@ -1,3 +1,4 @@
+
 {% extends "template.html.twig" %}
 
 {% block body %}
@@ -14,13 +15,13 @@
 			<div class="bloc1">Sorti en
 				<span>{{film.sortie|date("d/m/Y")}}</span>
 				et réalisé par
-				<span>{{film.nomReal}}</span>. C'est un film
-				<span>{{film.genre}}</span>
+				<span>{{ film.nomReal }}</span>. C'est un film
+				<span>{{ film.genre }}</span>
 				qui dure environs
 				<span>durée</span>. <br>	
 				On y retrouve les acteurs :
 				{% for actor in artists %}
-				{{ actor.prenom }}, {{ actor.nom }}	
+				{{ actor.prenom }} {{ actor.nom }}{% if not loop.last %},{% endif %}
 				{% endfor %}
 				<span></span>
 			</div>
@@ -28,17 +29,25 @@
 
 			<div class="bloc2">
 				<p>
-					synopsis : 
-					Lorem ipsum
+					{{ film.synopsis|nl2br }} 
 				</p>
 			</div>
 
 			<div class="clear"></div>
 
-			<div class="histoire">Liens vers acteurs et réal ou infos realisateur : lorem ipsum</div>
+			<div class="histoire">
+				<p>Liens vers acteurs et réalisateurs du film :</p>
+				<ul>
+				{% for actor in artists %}
+			
+					<li><a href="{{baseUrl}}/acteur/{{actor.id}}"> {{ actor.prenom }} {{ actor.nom }}{% if not loop.last %},{% endif %} </a> </li>
+				{% endfor %}
+					<li><a href="{{baseUrl}}/realisateur/{{film.id}}">{{film.prenomReal}} {{film.nomReal}}</li>
+			
+				</ul>
+			</div>
 
 		</div>
 	</div>
 
 {% endblock %}
-

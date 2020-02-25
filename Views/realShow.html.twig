@@ -1,3 +1,4 @@
+  
 {% extends "template.html.twig" %}
 
 {% block body %}
@@ -15,14 +16,13 @@
         {# <li><span>Rôles:</span> Machin dans tel truc</li> #}
         <li><span>Films: </span>
             {% for film in films %}
-				{{ film.titre }}	
+            <a href="{{baseUrl}}/film/{{film.id}}">{{ film.titre }}</a>
 			{% endfor %} </li>
         </ul>
 
         <div class="astree-titre">Biographie</div>
         <p>{{real.biographie}}</p>
         {#<p><a href="#">Clique ici</a></p>
-
         <div class="astree-titre">Visible aussi dans...</div>
         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>#}
 </div>
