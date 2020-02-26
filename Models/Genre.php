@@ -3,7 +3,8 @@
 class Genre extends Model
 {
     public function __construct()
-    { 
+    {
+       
         $this->pdo = parent::getPdo();
     }
 
@@ -46,3 +47,4 @@ class Genre extends Model
         $req->execute([$nom]);
     }
 }
+ 

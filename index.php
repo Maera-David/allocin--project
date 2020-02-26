@@ -1,10 +1,7 @@
 <?php
 require_once 'vendor/autoload.php';
 
-//echo password_hash('admin', PASSWORD_BCRYPT,array('cost'=> 12)) ;
-
 $router = new Router($_GET['url']);
-
 
 //liste de nos routes
 $router->get('/acteur/:id', "Artist.showActeur");
@@ -29,13 +26,12 @@ $router->get('/admin/genreAdd','Admin.genreAdd');
 $router->post('/admin/genreAdd','Admin.genreAdd'); 
 
 //Ajout des routes pour Admin Films
-$router->get('/admin/film','Admin.film');
 $router->post('/admin/filmUpdate/:id','Admin.filmUpdate');
 $router->get('/admin/filmUpdate/:id','Admin.filmUpdate');
-
 $router->get('/admin/filmDelete/:id','Admin.filmDelete');
 $router->get('/admin/filmAdd','Admin.filmAdd');
 $router->post('/admin/filmAdd','Admin.filmAdd'); 
+$router->get('/admin/film','Admin.film');
 
 //Ajout des routes pour Admin Acteurs
 $router->get('/admin/acteur','Admin.acteur');
@@ -52,4 +48,5 @@ $router->post('/admin/roleUpdate/:id', 'Admin.roleUpdate');
 $router->get('/admin/roleUpdate/:id', 'Admin.roleUpdate');
 
 $router->get('/', 'Home.index');
+
 $router->run();
