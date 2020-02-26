@@ -60,7 +60,7 @@ class Artist extends Model
     {
         $sql = 'INSERT INTO artiste (nom, prenom, date_de_naissance, biographie, photo) VALUES(?, ?, ?, ?, ?)';
         $req = $this->pdo->prepare($sql);
-        $req->execute([$nom, $prenom, $dateDeNaissance, $biographie, $photo]);
+        return $req->execute([$nom, $prenom, $dateDeNaissance, $biographie, $photo]);
     }
     
     public function update($id, $newValue)
